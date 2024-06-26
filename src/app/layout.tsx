@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { clsx } from "clsx";
+import { Header } from "@/components/Header";
 
 const proximanova = localFont({
 	variable: "--font-proximanova",
@@ -47,6 +48,7 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={clsx(proximanova.variable, "font-serif antialiased")}>
+				<Header />
 				<main>{children}</main>
 			</body>
 		</html>
