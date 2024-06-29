@@ -1,9 +1,20 @@
 import { NavLink } from "@/components/NavLink";
+import { HTMLAttributes } from "react";
+import { clsx } from "clsx";
 
-export const Navigation = () => {
+type NavigationProps = {
+	className?: HTMLAttributes<string>["className"];
+};
+
+export const Navigation = ({ className }: NavigationProps) => {
 	return (
 		<nav>
-			<ul className="flex flex-col laptop:flex-row laptop:space-x-8">
+			<ul
+				className={clsx({
+					"flex flex-col laptop:flex-row laptop:space-x-8": true,
+					[className ?? ""]: true,
+				})}
+			>
 				<NavLink href="/about" aria-label="O domku">
 					O domku
 				</NavLink>

@@ -4,6 +4,7 @@ const config = {
 	darkMode: ["class"],
 	content: [
 		"./pages/**/*.{ts,tsx}",
+		"./features/**/*.{ts,tsx}",
 		"./components/**/*.{ts,tsx}",
 		"./app/**/*.{ts,tsx}",
 		"./src/**/*.{ts,tsx}",
@@ -91,6 +92,12 @@ const config = {
 					800: "hsl(var(--gray-800))",
 					900: "hsl(var(--gray-900))",
 				},
+				main: {
+					gold: "hsl(var(--main-gold))",
+				},
+				pink: "hsl(var(--pink))",
+				lion: "hsl(var(--lion))",
+				dun: "hsl(var(--dun))",
 			},
 			borderRadius: {
 				lg: "var(--radius)",
