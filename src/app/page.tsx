@@ -14,6 +14,7 @@ import { Title } from "@/components/Title";
 import { ButtonLink } from "@/components/ButtonLink";
 import { PlayButton } from "@/components/PlayButton";
 import { CallToAction } from "@/features/call-to-action";
+import { ContactSection } from "@/features/contact-section";
 
 export default function Home() {
 	return (
@@ -162,7 +163,64 @@ export default function Home() {
 				</div>
 			</Section>
 
-			<CallToAction />
+			<CallToAction
+				buttonHref="/"
+				title="Zarezerwuj pobyt w Sunset House"
+				description="Odkryj urok Poreby Wielkiej i zatrzymaj się w naszym urokliwym domku letniskowym."
+				buttonText="Zarezerwuj teraz"
+			/>
+
+			<Section className="container mx-auto">
+				<div className="space-y-2">
+					<SectionTitle
+						level={3}
+						className="after:bottom-1.5 after:top-auto after:max-w-32"
+					>
+						Nasz zespół
+					</SectionTitle>
+					<Description className="text-gray-600">
+						Dbamy o komfort i wygodę naszych gości.
+					</Description>
+				</div>
+				<div className="mt-16 grid grid-cols-2 gap-10">
+					<div className="space-y-4">
+						<div className="relative h-lvh max-h-[18.75rem] overflow-hidden">
+							<NextImage
+								src="https://res.cloudinary.com/dstimijog/image/upload/v1720271216/sunset-house/team_a9iqks.jpg"
+								alt="Zespoły Sunset House"
+								fill
+								sizes="22.004vw"
+							/>
+						</div>
+						<Title>Adrian</Title>
+						<Description className="text-gray-600">
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+							eiusmod tempor incididunt ut labore et dolore magna aliqua. Orci
+							phasellus egestas tellus rutrum tellus pellentesque eu.
+							Scelerisque purus semper eget duis.
+						</Description>
+					</div>
+					<div className="space-y-4">
+						<div className="relative h-lvh max-h-[18.75rem] overflow-hidden">
+							<NextImage
+								src="https://res.cloudinary.com/dstimijog/image/upload/v1720271216/sunset-house/team_a9iqks.jpg"
+								alt="Zespoły Sunset House"
+								fill
+								sizes="22.004vw"
+							/>
+						</div>
+						<Title>Agnieszka</Title>
+						<Description className="text-gray-600">
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+							eiusmod tempor incididunt ut labore et dolore magna aliqua. Orci
+							phasellus egestas tellus rutrum tellus pellentesque eu.
+							Scelerisque purus semper eget duis.
+						</Description>
+					</div>
+				</div>
+			</Section>
+
+			<ContactSection />
 		</>
 	);
 }

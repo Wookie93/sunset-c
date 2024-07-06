@@ -5,7 +5,7 @@ import { IconChevronRight } from "@tabler/icons-react";
 
 type ButtonLinkProps = LinkProps & {
 	children: ReactNode;
-	type: "primary" | "bordered";
+	type: "primary" | "bordered" | "darken";
 };
 
 export const ButtonLink = ({
@@ -24,12 +24,20 @@ export const ButtonLink = ({
 				"bg-lion": type === "primary",
 				"border border-solid border-gray-900 bg-transparent":
 					type === "bordered",
+				"bg-gray-900 !text-gray-100 hover:bg-gray-200 hover:!text-gray-800":
+					type === "darken",
 			})}
 		>
 			{children}
 			<IconChevronRight
 				size={12}
-				className={type === "bordered" ? "text-lion" : "text-gray-100"}
+				className={
+					type === "bordered"
+						? "text-lion"
+						: type === "darken"
+							? "text-lion"
+							: "text-gray-100"
+				}
 			/>
 		</NextLink>
 	);

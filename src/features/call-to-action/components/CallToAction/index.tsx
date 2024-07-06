@@ -1,8 +1,21 @@
 import NextImage from "next/image";
 import { Description } from "@/components/Description";
 import { ButtonLink } from "@/components/ButtonLink";
+import { LinkProps } from "next/link";
 
-export const CallToAction = () => {
+type CallToActionProps = {
+	title: string;
+	description: string;
+	buttonText: string;
+	buttonHref: LinkProps["href"];
+};
+
+export const CallToAction = ({
+	title,
+	description,
+	buttonText,
+	buttonHref,
+}: CallToActionProps) => {
 	return (
 		<div className="relative h-screen max-h-[20rem] overflow-hidden bg-gray-900">
 			<NextImage
@@ -16,16 +29,13 @@ export const CallToAction = () => {
 			<div className="container relative z-10 mx-auto grid h-full grid-cols-12 items-center justify-items-center">
 				<div className="col-span-6 col-start-1 col-end-4">
 					<h3 className="text-[2rem] font-bold leading-10 text-gray-100">
-						Zarezerwuj pobyt w Sunset House
+						{title}
 					</h3>
 				</div>
 				<div className="col-span-6 col-start-7 col-end-10 space-y-4">
-					<Description className="text-gray-100">
-						Odkryj urok Poreby Wielkiej i zatrzymaj się w naszym urokliwym domku
-						letniskowym.
-					</Description>
-					<ButtonLink href="/" type="primary">
-						Zarezerwuj teraz
+					<Description className="text-gray-100">{description}</Description>
+					<ButtonLink href={buttonHref ?? "/"} type="primary">
+						{buttonText}
 					</ButtonLink>
 				</div>
 			</div>
