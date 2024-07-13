@@ -20,9 +20,9 @@ export default function Home() {
 	return (
 		<>
 			<Hero />
-			<Section className="container mx-auto">
-				<div className="grid grid-cols-12">
-					<div className="col-span-5 col-start-1 content-center space-y-12">
+			<Section className="mx-auto tablet:container max-tablet:pb-0">
+				<div className="grid laptop:grid-cols-12">
+					<div className="content-center space-y-6 px-5 laptop:col-span-5 laptop:col-start-1 laptop:space-y-12 laptop:px-0">
 						<SectionTitle level={3}>
 							Niezapomniany pobyt w<br /> Sunset House
 						</SectionTitle>
@@ -47,8 +47,8 @@ export default function Home() {
 							</div>
 						</div>
 					</div>
-					<div className="col-span-7 col-start-7">
-						<div className="relative h-lvh max-h-[32.75rem]">
+					<div className="col-span-1 pt-[3.125rem] tablet:pt-0 laptop:col-span-7 laptop:col-start-7">
+						<div className="relative h-lvh max-h-[21.875rem] laptop:max-h-[32.75rem]">
 							<NextImage
 								fill
 								src="https://res.cloudinary.com/dstimijog/image/upload/v1719667539/sunset-house/about_l8sf8k.jpg"
@@ -62,12 +62,12 @@ export default function Home() {
 
 			<Section className="bg-gray-100">
 				<div className="container mx-auto">
-					<div className="mb-20 flex justify-center">
+					<div className="mb-12 flex justify-center laptop:mb-20">
 						<SectionTitle level={3} className="max-w-[21.875rem] text-center">
 							Jak wynająć nasz uroczy domek letniskowy?
 						</SectionTitle>
 					</div>
-					<div className="grid grid-cols-3 space-x-10">
+					<div className="grid grid-cols-1 laptop:grid-cols-3 laptop:space-x-10">
 						<div className="space-y-6 p-6">
 							<IconCalendarCheck
 								size={45}
@@ -111,7 +111,7 @@ export default function Home() {
 							</div>
 						</div>
 					</div>
-					<div className="mt-10 flex flex-row items-center justify-center space-x-6">
+					<div className="mt-10 flex flex-col items-center justify-center max-tablet:space-y-4 tablet:flex-row tablet:space-x-6">
 						<ButtonLink type="bordered" href="/">
 							Dowiedz się więcej
 						</ButtonLink>
@@ -122,9 +122,9 @@ export default function Home() {
 				</div>
 			</Section>
 
-			<Section className="container mx-auto grid grid-cols-12 items-center">
-				<div className="col-span-6">
-					<div className="relative flex h-lvh max-h-[37.75rem] items-center justify-center bg-gray-800">
+			<Section className="mx-auto grid items-center tablet:container max-tablet:pb-0 laptop:grid-cols-12">
+				<div className="col-span-1 max-tablet:order-2 max-tablet:pt-[3.125rem] tablet:col-span-6">
+					<div className="relative flex h-lvh max-h-[24.375rem] items-center justify-center bg-gray-800 laptop:max-h-[37.75rem]">
 						<NextImage
 							fill
 							src="https://res.cloudinary.com/dstimijog/image/upload/v1720267465/sunset-house/video_enx4b7.jpg"
@@ -135,7 +135,7 @@ export default function Home() {
 						<PlayButton />
 					</div>
 				</div>
-				<div className="col-span-5 col-start-8 space-y-12">
+				<div className="col-span-1 space-y-12 max-tablet:order-1 max-tablet:px-5 tablet:col-span-5 tablet:col-start-8">
 					<SectionTitle level={3}>
 						Odkryj piękno przyrody w naszym wyjątkowym domku
 					</SectionTitle>
@@ -182,9 +182,9 @@ export default function Home() {
 						Dbamy o komfort i wygodę naszych gości.
 					</Description>
 				</div>
-				<div className="mt-16 grid grid-cols-2 gap-10">
+				<div className="mt-16 grid grid-cols-1 gap-10 tablet:grid-cols-2">
 					<div className="space-y-4">
-						<div className="relative h-lvh max-h-[18.75rem] overflow-hidden">
+						<div className="relative h-lvh max-h-[12.5rem] overflow-hidden tablet:max-h-[18.75rem]">
 							<NextImage
 								src="https://res.cloudinary.com/dstimijog/image/upload/v1720271216/sunset-house/team_a9iqks.jpg"
 								alt="Zespoły Sunset House"
@@ -201,7 +201,7 @@ export default function Home() {
 						</Description>
 					</div>
 					<div className="space-y-4">
-						<div className="relative h-lvh max-h-[18.75rem] overflow-hidden">
+						<div className="relative h-lvh max-h-[12.5rem] overflow-hidden tablet:max-h-[18.75rem]">
 							<NextImage
 								src="https://res.cloudinary.com/dstimijog/image/upload/v1720271216/sunset-house/team_a9iqks.jpg"
 								alt="Zespoły Sunset House"

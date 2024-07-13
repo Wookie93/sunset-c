@@ -10,7 +10,7 @@ export const Heading = ({ children, className }: HeadingProps) => {
 	return (
 		<h1
 			className={clsx({
-				"text-7xl font-bold": true,
+				"text-4xl font-bold laptop:text-7xl": true,
 				[className ?? ""]: true,
 			})}
 		>

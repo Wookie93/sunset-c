@@ -7,7 +7,7 @@ export const Section = ({ children, className }: SectionProps) => {
 	return (
 		<section
 			className={clsx({
-				"py-[6.25rem]": true,
+				"py-[3.125rem] laptop:py-[6.25rem]": true,
 				[className ?? ""]: className,
 			})}
 		>

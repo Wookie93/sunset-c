@@ -16,7 +16,9 @@ export const Header = () => {
 					{pathname === "/" ? <LogoColor /> : <LogoDark />}
 				</NextLink>
 				<Navigation className={pathname === "/" ? "text-white" : ""} />
-				<PrimaryButton>Zarezerwuj teraz</PrimaryButton>
+				<PrimaryButton className="hidden laptop:block">
+					Zarezerwuj teraz
+				</PrimaryButton>
 			</div>
 		</header>
 	);

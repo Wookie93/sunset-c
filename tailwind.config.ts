@@ -13,10 +13,19 @@ const config = {
 	theme: {
 		container: {
 			center: true,
-			padding: "2rem",
+			padding: {
+				DEFAULT: "1.25rem",
+				laptop: "2rem",
+			},
 			screens: {
+				tablet: "601px",
+				tabletLg: "768px",
+				laptop: "1024px",
 				desktop: "1280px",
+				xl: "1366px",
 				"2xl": "1440px",
+				"3xl": "1536px",
+				"4xl": "1920px",
 			},
 		},
 		screens: {

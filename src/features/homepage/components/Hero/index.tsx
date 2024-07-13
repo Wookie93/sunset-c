@@ -15,10 +15,10 @@ export const Hero = () => {
 				sizes="100vw"
 				className="mix-blend-soft-light grayscale"
 			/>
-			<div className="absolute left-12 top-1/3">
+			<div className="absolute left-12 top-1/3 hidden laptop:block">
 				<Socials />
 			</div>
-			<div className="absolute bottom-12 left-12">
+			<div className="absolute bottom-12 left-1/2 -translate-x-1/2 transform laptop:left-12 laptop:translate-x-0">
 				<Button className="flex flex-col items-center bg-transparent p-0 text-gray-100">
 					<IconMouse size={30} />
 					<span className="text-[10px] font-semibold uppercase text-white">
@@ -26,9 +26,9 @@ export const Hero = () => {
 					</span>
 				</Button>
 			</div>
-			<div className="container relative top-1/2 mx-auto grid -translate-y-1/2 transform grid-cols-12">
-				<div className="col-span-6 col-start-7 grid grid-cols-6">
-					<div className="col-span-4 space-y-4">
+			<div className="container relative top-1/2 mx-auto grid -translate-y-1/2 transform laptop:grid-cols-12">
+				<div className="col-span-12 grid laptop:col-span-6 laptop:col-start-7 laptop:grid-cols-6">
+					<div className="space-y-4 laptop:col-span-4">
 						<Heading className="text-white">Witamy w Sunset House</Heading>
 						<Description className="text-white">
 							Odkryj urok naszej malowniczej wioski i ciesz się niezapomnianym
@@ -37,7 +37,7 @@ export const Hero = () => {
 							atrakcje turystyczne w okolicy umilą Twój pobyt.
 						</Description>
 						<div className="flex flex-row space-x-8">
-							<SunsetButton text="Dowiedx się więcej" />
+							<SunsetButton text="Dowiedz się więcej" />
 							<SunsetButton text="Zarezerwuj teraz" />
 						</div>
 					</div>

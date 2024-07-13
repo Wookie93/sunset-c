@@ -17,7 +17,7 @@ export const CallToAction = ({
 	buttonHref,
 }: CallToActionProps) => {
 	return (
-		<div className="relative h-screen max-h-[20rem] overflow-hidden bg-gray-900">
+		<div className="relative overflow-hidden bg-gray-900 tablet:h-screen tablet:max-h-[20rem]">
 			<NextImage
 				fill
 				priority
@@ -26,13 +26,13 @@ export const CallToAction = ({
 				className="object-cover opacity-70 mix-blend-hard-light grayscale"
 				sizes="100vw"
 			/>
-			<div className="container relative z-10 mx-auto grid h-full grid-cols-12 items-center justify-items-center">
-				<div className="col-span-6 col-start-1 col-end-4">
+			<div className="container relative z-10 mx-auto grid items-center justify-items-center space-y-3 py-[6.25rem] tablet:h-full tablet:grid-cols-12 tablet:py-0">
+				<div className="tablet:col-span-6 tablet:col-start-1 tablet:col-end-4">
 					<h3 className="text-[2rem] font-bold leading-10 text-gray-100">
 						{title}
 					</h3>
 				</div>
-				<div className="col-span-6 col-start-7 col-end-10 space-y-4">
+				<div className="space-y-4 tablet:col-span-6 tablet:col-start-7 tablet:col-end-10">
 					<Description className="text-gray-100">{description}</Description>
 					<ButtonLink href={buttonHref ?? "/"} type="primary">
 						{buttonText}
