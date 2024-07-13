@@ -6,7 +6,7 @@ import { Description } from "@/components/Description";
 
 export const Hero = () => {
 	return (
-		<div className="relative h-screen min-h-[52.25rem] bg-gray-700">
+		<div className="relative h-screen min-h-[40rem] bg-gray-700 max-tablet:max-h-[52.25rem]">
 			<NextImage
 				fill
 				priority

@@ -124,7 +124,7 @@ export default function Home() {
 
 			<Section className="mx-auto grid items-center tablet:container max-tablet:pb-0 laptop:grid-cols-12">
 				<div className="col-span-1 max-tablet:order-2 max-tablet:pt-[3.125rem] tablet:col-span-6">
-					<div className="relative flex h-lvh max-h-[24.375rem] items-center justify-center bg-gray-800 laptop:max-h-[37.75rem]">
+					<div className="relative flex h-lvh max-h-[24.375rem] items-center justify-center bg-gray-800 laptop:max-h-[32.75rem]">
 						<NextImage
 							fill
 							src="https://res.cloudinary.com/dstimijog/image/upload/v1720267465/sunset-house/video_enx4b7.jpg"
@@ -184,7 +184,7 @@ export default function Home() {
 				</div>
 				<div className="mt-16 grid grid-cols-1 gap-10 tablet:grid-cols-2">
 					<div className="space-y-4">
-						<div className="relative h-lvh max-h-[12.5rem] overflow-hidden tablet:max-h-[18.75rem]">
+						<div className="relative h-lvh max-h-[18.75rem] overflow-hidden">
 							<NextImage
 								src="https://res.cloudinary.com/dstimijog/image/upload/v1720271216/sunset-house/team_a9iqks.jpg"
 								alt="Zespoły Sunset House"
@@ -201,7 +201,7 @@ export default function Home() {
 						</Description>
 					</div>
 					<div className="space-y-4">
-						<div className="relative h-lvh max-h-[12.5rem] overflow-hidden tablet:max-h-[18.75rem]">
+						<div className="relative h-lvh max-h-[18.75rem] overflow-hidden">
 							<NextImage
 								src="https://res.cloudinary.com/dstimijog/image/upload/v1720271216/sunset-house/team_a9iqks.jpg"
 								alt="Zespoły Sunset House"

@@ -24,8 +24,7 @@ export const ButtonLink = ({
 				"bg-lion": type === "primary",
 				"border border-solid border-gray-900 bg-transparent":
 					type === "bordered",
-				"bg-gray-900 !text-gray-100 hover:bg-gray-200 hover:!text-gray-800":
-					type === "darken",
+				"bg-gray-900 !text-gray-100 hover:bg-gray-200": type === "darken",
 			})}
 		>
 			{children}
