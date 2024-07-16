@@ -10,7 +10,7 @@ type NavLinkProps = {
 export const NavLink = ({ href, children, ...props }: NavLinkProps) => {
 	return (
 		<li>
-			<NextLink {...props} href={href} className="text-sm">
+			<NextLink {...props} href={href} className="text-xl laptop:text-sm">
 				{children}
 			</NextLink>
 		</li>

@@ -12,9 +12,9 @@ import {
 
 export const ContactSection = () => {
 	return (
-		<Section className="mx-auto pt-0 tablet:container">
-			<div className="grid laptop:grid-cols-2">
-				<div className="min-h-[36.25rem] space-y-10 bg-gray-900 p-5 laptop:rounded-bl-2xl laptop:rounded-tl-2xl laptop:p-12">
+		<Section className="mx-auto pt-0 tabletLg:container">
+			<div className="grid tabletLg:grid-cols-2">
+				<div className="space-y-10 bg-gray-900 p-5 tabletLg:rounded-bl-2xl tabletLg:rounded-tl-2xl tabletLg:p-12 laptop:min-h-[36.25rem]">
 					<div className="space-y-4">
 						<IconMail size={32} className="text-gray-100" />
 						<div className="space-y-2">
@@ -55,7 +55,7 @@ export const ContactSection = () => {
 						</div>
 					</div>
 				</div>
-				<div className="relative min-h-[36.25rem] bg-lion p-5 laptop:rounded-br-2xl laptop:rounded-tr-2xl laptop:p-12">
+				<div className="relative bg-lion p-5 tabletLg:rounded-br-2xl tabletLg:rounded-tr-2xl tabletLg:p-12 laptop:min-h-[36.25rem]">
 					<NextImage
 						fill
 						src="https://res.cloudinary.com/dstimijog/image/upload/v1720272583/sunset-house/image_mrhqmh.jpg"

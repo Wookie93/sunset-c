@@ -26,7 +26,7 @@ export const CallToAction = ({
 				className="object-cover opacity-70 mix-blend-hard-light grayscale"
 				sizes="100vw"
 			/>
-			<div className="container relative z-10 mx-auto grid items-center justify-items-center space-y-3 py-[6.25rem] tablet:h-full tablet:grid-cols-12 tablet:py-0">
+			<div className="container relative z-10 mx-auto grid items-center justify-items-center space-y-3 py-[6.25rem] tablet:h-full tablet:py-0 laptop:grid-cols-12">
 				<div className="tablet:col-span-6 tablet:col-start-1 tablet:col-end-4">
 					<h3 className="text-[2rem] font-bold leading-10 text-gray-100">
 						{title}

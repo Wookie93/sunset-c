@@ -3,7 +3,7 @@ import NextLink from "next/link";
 export const Footer = () => {
 	return (
 		<footer className="container mx-auto border-t border-gray-100 py-6">
-			<div className="grid gap-10 laptop:grid-cols-2">
+			<div className="grid gap-2 laptop:grid-cols-2">
 				<div className="space-x-6 laptop:col-start-1">
 					<NextLink
 						className="text-sm text-gray-900 transition-colors duration-300 hover:text-lion"

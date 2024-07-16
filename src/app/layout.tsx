@@ -1,33 +1,11 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import "./globals.css";
-import { clsx } from "clsx";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-
-const proximanova = localFont({
-	variable: "--font-proximanova",
-	display: "swap",
-	style: "normal",
-	src: [
-		{
-			path: "../assets/fonts/proximanova_light.woff2",
-			weight: "300",
-		},
-		{
-			path: "../assets/fonts/proximanova_regular.woff2",
-			weight: "400",
-		},
-		{
-			path: "../assets/fonts/proximanova_semibold.woff2",
-			weight: "600",
-		},
-		{
-			path: "../assets/fonts/proximanova_bold.woff2",
-			weight: "700",
-		},
-	],
-});
+import { NavigationProvider } from "@/providers/navigation-provider";
+import { ReactNode } from "react";
+import { Body } from "@/components/Body";
+import { MobileMenu } from "@/components/MobileMenu";
 
 export const metadata: Metadata = {
 	title: "Domek w górach na wynajem - komfortowy wypoczynek w sercu natury",
@@ -44,15 +22,18 @@ export const metadata: Metadata = {
 export default function RootLayout({
 	children,
 }: Readonly<{
-	children: React.ReactNode;
+	children: ReactNode;
 }>) {
 	return (
 		<html lang="en">
-			<body className={clsx(proximanova.variable, "font-serif antialiased")}>
-				<Header />
-				<main>{children}</main>
-				<Footer />
-			</body>
+			<NavigationProvider>
+				<Body>
+					<Header />
+					<MobileMenu />
+					<main>{children}</main>
+					<Footer />
+				</Body>
+			</NavigationProvider>
 		</html>
 	);
 }

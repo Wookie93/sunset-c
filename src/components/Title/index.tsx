@@ -10,7 +10,7 @@ export const Title = ({ children, className }: TitleProps) => {
 	return (
 		<h4
 			className={clsx({
-				"text-xl font-semibold text-gray-900": true,
+				"text-base font-semibold text-gray-900 laptop:text-xl": true,
 				[className ?? ""]: className,
 			})}
 		>

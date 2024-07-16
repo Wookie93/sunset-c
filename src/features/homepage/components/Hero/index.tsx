@@ -36,7 +36,7 @@ export const Hero = () => {
 							Nasz profesjonalny zespół zapewni Ci doskonałą obsługę, a liczne
 							atrakcje turystyczne w okolicy umilą Twój pobyt.
 						</Description>
-						<div className="flex flex-row space-x-8">
+						<div className="flex flex-row space-x-8 max-[390px]:flex-col max-[390px]:space-x-0 max-[390px]:space-y-4">
 							<SunsetButton text="Dowiedz się więcej" />
 							<SunsetButton text="Zarezerwuj teraz" />
 						</div>

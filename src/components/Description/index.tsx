@@ -10,7 +10,7 @@ export const Description = ({ children, className }: DescriptionProps) => {
 	return (
 		<p
 			className={clsx({
-				"text-base font-normal": true,
+				"text-sm font-normal 3xl:text-base": true,
 				[className ?? ""]: true,
 			})}
 		>
