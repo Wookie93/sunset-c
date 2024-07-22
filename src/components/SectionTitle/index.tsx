@@ -13,8 +13,7 @@ export const SectionTitle = ({ children, level, className }: TitleProps) => {
 	return (
 		<Tag
 			className={clsx({
-				"relative z-10 text-2xl font-bold text-gray-900 after:absolute after:left-0 after:top-1/3 after:z-[-1] after:h-1.5 after:w-full after:max-w-64 after:bg-main-gold/60 laptop:text-3xl":
-					true,
+				"relative z-10 text-2xl font-bold text-gray-900 laptop:text-3xl": true,
 				[className ?? ""]: className,
 			})}
 		>

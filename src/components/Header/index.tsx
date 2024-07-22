@@ -34,7 +34,12 @@ export const Header = () => {
 					)}
 					icon={isOpen ? <IconX /> : <IconMenu2 />}
 				/>
-				<PrimaryButton className="hidden laptop:block">
+				<PrimaryButton
+					className={clsx({
+						"hidden laptop:block": true,
+						"!bg-gray-900 text-white": pathname !== "/",
+					})}
+				>
 					Zarezerwuj teraz
 				</PrimaryButton>
 			</div>

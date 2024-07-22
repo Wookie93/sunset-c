@@ -170,7 +170,7 @@ export default function Home() {
 				buttonText="Zarezerwuj teraz"
 			/>
 
-			<Section className="container mx-auto">
+			<Section className="container mx-auto !pb-0">
 				<div className="space-y-2">
 					<SectionTitle
 						level={3}
