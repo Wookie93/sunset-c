@@ -1,6 +1,6 @@
 "use client";
 
-import { gallery } from "@/app/gallery/mock";
+import { gallery, galleryCard } from "@/app/gallery/mock";
 import { Baner } from "@/components/Baner";
 import React from "react";
 import { ContactSection } from "@/features/contact-section";
@@ -23,9 +23,9 @@ export const GalleryEntry = ({ params }: GalleryEntryProps) => {
 				title={galleryEntry?.title || ""}
 				description={galleryEntry?.description || ""}
 			/>
-			<Section className="container mx-auto !pb-0">
+			<Section className="container mx-auto laptop:!pb-0">
 				<div className="grid grid-cols-12 gap-10">
-					<aside className="col-span-3 rounded-xl border border-gray-200 p-4">
+					<aside className="col-span-3 max-h-[8.125rem] rounded-xl border border-gray-200 p-4">
 						<ul>
 							{gallery.map((el) => (
 								<li
@@ -44,11 +44,11 @@ export const GalleryEntry = ({ params }: GalleryEntryProps) => {
 					</aside>
 					<div className="col-span-9">
 						<Masonry
-							items={[...(gallery || [])]}
+							items={[...(galleryCard || [])]}
 							config={{
 								columns: [1, 2, 3],
-								gap: [24, 12, 6],
-								media: [640, 768, 1024],
+								gap: [24, 16, 16],
+								media: [601, 768, 1024],
 							}}
 							placeholder={<ContentCardSkeletonList />}
 							render={(item) => (
@@ -56,7 +56,7 @@ export const GalleryEntry = ({ params }: GalleryEntryProps) => {
 									key={item.id}
 									src={item.image}
 									alt={item.title}
-									width={260}
+									width={311}
 									height={260}
 								/>
 							)}

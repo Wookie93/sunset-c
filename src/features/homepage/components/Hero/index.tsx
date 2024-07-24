@@ -28,7 +28,7 @@ export const Hero = () => {
 			</div>
 			<div className="container relative top-1/2 mx-auto grid -translate-y-1/2 transform laptop:grid-cols-12">
 				<div className="col-span-12 grid laptop:col-span-6 laptop:col-start-7 laptop:grid-cols-6">
-					<div className="space-y-4 laptop:col-span-4">
+					<div className="space-y-4 laptop:col-span-4 3xl:col-span-5">
 						<Heading className="text-white">Witamy w Sunset House</Heading>
 						<Description className="text-white">
 							Odkryj urok naszej malowniczej wioski i ciesz się niezapomnianym
