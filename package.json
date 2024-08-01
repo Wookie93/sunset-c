@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@maptiler/sdk": "^2.2.1",
+    "@radix-ui/react-accordion": "^1.2.0",
     "@radix-ui/react-slot": "^1.1.0",
     "@tabler/icons-react": "^3.6.0",
     "class-variance-authority": "^0.7.0",
@@ -24,7 +25,7 @@
     "swiper": "^11.1.4",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
-    "yup": "^1.4.0"
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@next/env": "^14.2.4",

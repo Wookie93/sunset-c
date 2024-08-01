@@ -8,11 +8,16 @@ import {
 } from "@tabler/icons-react";
 import { Title } from "@/components/Title";
 import { Description } from "@/components/Description";
-import { InputField } from "@/components/Input";
-import { TextareaField } from "@/components/Textarea";
-import { Button } from "@/components/ui/button";
 import { Map } from "@/features/map";
 import NextImage from "next/image";
+import { ContactForm } from "@/components/ContactForm";
+import { SectionTitle } from "@/components/SectionTitle";
+import {
+	Accordion,
+	AccordionContent,
+	AccordionItem,
+	AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const ContactPage = () => {
 	return (
@@ -67,18 +72,7 @@ const ContactPage = () => {
 							</div>
 						</div>
 
-						<form>
-							<fieldset className="mb-6 space-y-3">
-								<InputField placeholder="Adres e-mail" type="email" />
-								<TextareaField placeholder="Wiadomość" />
-							</fieldset>
-							<Button
-								type="submit"
-								className="rounded-3xl bg-lion px-7 py-3.5 text-xs uppercase text-gray-900 transition-all duration-300 hover:bg-main-gold"
-							>
-								Wyslij
-							</Button>
-						</form>
+						<ContactForm />
 					</div>
 
 					<div className="col-span-1 pt-[3.125rem] tabletLg:col-span-6 tabletLg:col-start-7 tabletLg:pt-0">
@@ -96,6 +90,68 @@ const ContactPage = () => {
 			</Section>
 
 			<Map />
+
+			<Section className="container mx-auto">
+				<div className="grid grid-cols-12">
+					<div className="col-span-4">
+						<SectionTitle level={3}>
+							Sunset House - najczęściej zadawane pytania
+						</SectionTitle>
+					</div>
+					<div className="col-span-6 col-start-7">
+						<Accordion type="single" collapsible>
+							<AccordionItem value="item-1">
+								<AccordionTrigger>
+									<Title className="!font-bold">
+										W jakich godzinach w domach trwa doba hotelowa?
+									</Title>
+								</AccordionTrigger>
+								<AccordionContent>
+									<Description className="text-gray-600">
+										Please provide comprehensive answers to those questions. You
+										will save lots of time and money by eliminating the
+										necessity to give constant support. You also will keep your
+										clients time cause they will quickly find the answers to all
+										their questions.
+									</Description>
+								</AccordionContent>
+							</AccordionItem>
+							<AccordionItem value="item-2">
+								<AccordionTrigger>
+									<Title className="!font-bold">
+										Czy mogę zamówić śniadanie do domku?
+									</Title>
+								</AccordionTrigger>
+								<AccordionContent>
+									<Description className="text-gray-600">
+										Please provide comprehensive answers to those questions. You
+										will save lots of time and money by eliminating the
+										necessity to give constant support. You also will keep your
+										clients time cause they will quickly find the answers to all
+										their questions.
+									</Description>
+								</AccordionContent>
+							</AccordionItem>
+							<AccordionItem value="item-3">
+								<AccordionTrigger>
+									<Title className="!font-bold">
+										Jak wygląda dojazd do domku?
+									</Title>
+								</AccordionTrigger>
+								<AccordionContent>
+									<Description className="text-gray-600">
+										Please provide comprehensive answers to those questions. You
+										will save lots of time and money by eliminating the
+										necessity to give constant support. You also will keep your
+										clients time cause they will quickly find the answers to all
+										their questions.
+									</Description>
+								</AccordionContent>
+							</AccordionItem>
+						</Accordion>
+					</div>
+				</div>
+			</Section>
 		</>
 	);
 };
