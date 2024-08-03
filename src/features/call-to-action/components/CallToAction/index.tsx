@@ -1,7 +1,11 @@
+"use client";
+
 import NextImage from "next/image";
 import { Description } from "@/components/Description";
 import { ButtonLink } from "@/components/ButtonLink";
 import { LinkProps } from "next/link";
+import { clsx } from "clsx";
+import { usePathname } from "next/navigation";
 
 type CallToActionProps = {
 	title: string;
@@ -16,6 +20,7 @@ export const CallToAction = ({
 	buttonText,
 	buttonHref,
 }: CallToActionProps) => {
+	const pathname = usePathname();
 	return (
 		<div className="relative overflow-hidden bg-gray-900 tablet:h-screen tablet:max-h-[20rem]">
 			<NextImage
@@ -27,7 +32,12 @@ export const CallToAction = ({
 				sizes="100vw"
 			/>
 			<div className="container relative z-10 mx-auto grid items-center justify-items-center space-y-3 py-[6.25rem] tablet:h-full tablet:py-0 laptop:grid-cols-12">
-				<div className="tablet:col-span-6 tablet:col-start-1 tablet:col-end-4">
+				<div
+					className={clsx({
+						"tablet:col-span-6 tablet:col-start-1 tablet:col-end-4": true,
+						"tabletLg:col-end-6": pathname !== "/" && pathname !== "/about",
+					})}
+				>
 					<h3 className="text-[2rem] font-bold leading-10 text-gray-100">
 						{title}
 					</h3>

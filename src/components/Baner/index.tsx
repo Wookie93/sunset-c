@@ -18,7 +18,7 @@ export const Baner = ({ title, description }: BanerProps) => {
 				className="object-cover mix-blend-soft-light grayscale"
 			/>
 			<div className="container mx-auto grid grid-cols-12 pt-40">
-				<div className="col-span-5 space-y-2">
+				<div className="col-span-4 space-y-2">
 					<h1 className="text-[2.625rem] font-bold">{title}</h1>
 					<Description>{description}</Description>
 				</div>
