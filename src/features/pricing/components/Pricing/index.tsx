@@ -21,7 +21,7 @@ export const Pricing = () => {
 	return (
 		<>
 			<div className="grid grid-cols-12">
-				<div className="col-span-4">
+				<div className="col-span-12 tablet:col-span-4">
 					<div className="space-y-8">
 						<SectionTitle level={3}>Wybierz rezerwacje</SectionTitle>
 						<Description className="text-gray-600">
@@ -31,7 +31,7 @@ export const Pricing = () => {
 						</Description>
 					</div>
 				</div>
-				<div className="group col-span-8 flex items-end justify-end">
+				<div className="group col-span-12 mt-[3.125rem] flex items-center justify-center tablet:col-span-8 tablet:mt-0 tablet:items-end tablet:justify-end">
 					<div
 						slot="navigation"
 						className={clsx(
@@ -69,7 +69,7 @@ export const Pricing = () => {
 					</div>
 				</div>
 			</div>
-			<div className="mt-16">
+			<div className="mt-8 tablet:mt-16">
 				<Swiper
 					init={false}
 					modules={[FreeMode, Navigation]}
@@ -78,10 +78,18 @@ export const Pricing = () => {
 					}}
 					className="w-full max-w-full !overflow-visible"
 					freeMode
-					spaceBetween={1}
-					slidesPerView={2}
+					spaceBetween={20}
+					slidesPerView={1}
 					breakpoints={{
+						601: {
+							spaceBetween: 10,
+							slidesPerView: 2,
+						},
 						768: {
+							spaceBetween: 20,
+							slidesPerView: 3,
+						},
+						1281: {
 							spaceBetween: 40,
 							slidesPerView: 4,
 						},

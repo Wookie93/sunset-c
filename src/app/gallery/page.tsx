@@ -16,14 +16,14 @@ const GalleryPage = () => {
 				description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Velit euismod in pellentesque massa placerat."
 			/>
 
-			<Section className="container mx-auto space-y-10 !pb-0">
+			<Section className="container mx-auto space-y-10 laptop:!pb-0">
 				{gallery.map((el) => (
 					<div
 						key={el.id}
-						className="grid grid-cols-12 rounded-2xl border border-gray-100 px-10 py-10"
+						className="grid grid-cols-12 gap-y-4 rounded-2xl border border-gray-100 p-4 laptop:p-10"
 					>
-						<div className="col-span-4 flex flex-col justify-between">
-							<div className="space-y-7">
+						<div className="order-2 col-span-12 flex flex-col justify-between gap-y-4 tablet:order-1 tablet:col-span-4">
+							<div className="space-y-4 laptop:space-y-7">
 								<SectionTitle level={3}>{el.title}</SectionTitle>
 								<Description className="text-gray-600">
 									{el.description}
@@ -33,7 +33,7 @@ const GalleryPage = () => {
 								Zobacz więcej
 							</ButtonLink>
 						</div>
-						<div className="relative col-span-4 col-start-9 min-h-[15.188rem]">
+						<div className="relative order-1 col-span-12 min-h-[15.188rem] tablet:order-2 tablet:col-span-4 tablet:col-start-9">
 							<NextImage
 								src={el.image}
 								alt={el.title}

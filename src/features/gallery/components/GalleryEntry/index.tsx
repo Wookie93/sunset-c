@@ -24,25 +24,28 @@ export const GalleryEntry = ({ params }: GalleryEntryProps) => {
 				description={galleryEntry?.description || ""}
 			/>
 			<Section className="container mx-auto laptop:!pb-0">
-				<div className="grid grid-cols-12 gap-10">
-					<aside className="col-span-3 max-h-[8.125rem] rounded-xl border border-gray-200 p-4">
+				<div className="grid grid-cols-12 laptop:gap-10">
+					<aside className="col-span-12 mb-6 max-h-[4.125rem] rounded-xl border border-gray-200 p-2 tablet:col-span-4 tablet:mb-0 tabletLg:col-span-3 laptop:max-h-[8.125rem] laptop:p-4">
 						<ul>
 							{gallery.map((el) => (
 								<li
 									key={el.id}
 									className={clsx({
-										"py-3": true,
+										"laptop:py-3": true,
 										"border-b border-gray-200": el.id === 0,
 									})}
 								>
-									<NextLink href={`/gallery/${el.slug}`} className="text-base">
+									<NextLink
+										href={`/gallery/${el.slug}`}
+										className="text-xs laptop:text-base"
+									>
 										{el.title}
 									</NextLink>
 								</li>
 							))}
 						</ul>
 					</aside>
-					<div className="col-span-9">
+					<div className="col-span-12 tablet:col-span-8 tabletLg:col-span-9">
 						<Masonry
 							items={[...(galleryCard || [])]}
 							config={{
@@ -58,6 +61,7 @@ export const GalleryEntry = ({ params }: GalleryEntryProps) => {
 									alt={item.title}
 									width={311}
 									height={260}
+									className="max-tablet:w-full"
 								/>
 							)}
 						/>

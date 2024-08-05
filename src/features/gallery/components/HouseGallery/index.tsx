@@ -12,8 +12,22 @@ export const HouseGallery = () => {
 	return (
 		<Swiper
 			modules={[Pagination]}
-			spaceBetween={40}
-			slidesPerView={3}
+			spaceBetween={1}
+			slidesPerView={1}
+			breakpoints={{
+				601: {
+					spaceBetween: 10,
+					slidesPerView: 2,
+				},
+				1025: {
+					spaceBetween: 20,
+					slidesPerView: 3,
+				},
+				1281: {
+					spaceBetween: 30,
+					slidesPerView: 4,
+				},
+			}}
 			centeredSlides
 			grabCursor
 			navigation

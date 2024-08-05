@@ -32,7 +32,7 @@ const AboutPage = () => {
 
 			<Section className="container mx-auto">
 				<div className="grid tabletLg:grid-cols-12">
-					<div className="col-span-1 pt-[3.125rem] tabletLg:col-span-6 tabletLg:col-start-1 tabletLg:pt-0">
+					<div className="order-2 col-span-1 pt-[3.125rem] tabletLg:order-1 tabletLg:col-span-6 tabletLg:col-start-1 tabletLg:pt-0">
 						<div className="relative h-lvh max-h-[21.875rem] laptop:max-h-[31.25rem]">
 							<NextImage
 								fill
@@ -43,7 +43,7 @@ const AboutPage = () => {
 							/>
 						</div>
 					</div>
-					<div className="content-center space-y-6 px-5 tabletLg:col-span-5 tabletLg:col-start-8 tabletLg:px-0">
+					<div className="order-1 content-center space-y-6 px-5 tabletLg:order-2 tabletLg:col-span-5 tabletLg:col-start-8 tabletLg:px-0">
 						<SectionTitle level={3}>Komfortowy domek Sunset House</SectionTitle>
 						<Description className="text-gray-600">
 							Domek na wynajem przewidziany został dla 6-8 osób i składa się z
@@ -60,8 +60,8 @@ const AboutPage = () => {
 			</Section>
 
 			<div className="bg-gray-100 py-9">
-				<div className="container mx-auto grid grid-cols-12">
-					<div className="col-span-3">
+				<div className="container mx-auto grid grid-cols-12 gap-6">
+					<div className="col-span-6 laptop:col-span-3">
 						<NextLink href="/" className="flex flex-row items-center space-x-2">
 							<IconShieldChevron size={24} />
 							<p className="text-base font-normal text-gray-900">
@@ -69,7 +69,7 @@ const AboutPage = () => {
 							</p>
 						</NextLink>
 					</div>
-					<div className="col-span-3">
+					<div className="col-span-6 laptop:col-span-3">
 						<NextLink href="/" className="flex flex-row items-center space-x-2">
 							<IconBookmarkEdit size={24} />
 							<p className="text-base font-normal text-gray-900">
@@ -77,7 +77,7 @@ const AboutPage = () => {
 							</p>
 						</NextLink>
 					</div>
-					<div className="col-span-3">
+					<div className="col-span-6 laptop:col-span-3">
 						<NextLink
 							href="/contact"
 							className="flex flex-row items-center space-x-2"
@@ -88,7 +88,7 @@ const AboutPage = () => {
 							</p>
 						</NextLink>
 					</div>
-					<div className="col-span-3">
+					<div className="col-span-6 laptop:col-span-3">
 						<NextLink
 							href="/pricing"
 							className="flex flex-row items-center space-x-2"
@@ -106,43 +106,43 @@ const AboutPage = () => {
 				<div className="flex justify-center">
 					<SectionTitle level={3}>Udogodnienia</SectionTitle>
 				</div>
-				<div className="mt-20 grid grid-cols-12 gap-16">
-					<div className="col-span-4">
+				<div className="mt-[3.125rem] grid grid-cols-12 gap-y-6 laptop:mt-20 laptop:gap-16">
+					<div className="col-span-12 tablet:col-span-6 laptop:col-span-4">
 						<FeatureFacilitie
 							icon={<IconHomeCog size={44} className="text-main-gold" />}
 							title="Powierzchnia domku"
 							feature="75m2"
 						/>
 					</div>
-					<div className="col-span-4">
+					<div className="col-span-12 tablet:col-span-6 laptop:col-span-4">
 						<FeatureFacilitie
 							icon={<IconWifi size={44} className="text-main-gold" />}
 							title="Internet"
 							feature="WiFi"
 						/>
 					</div>
-					<div className="col-span-4">
+					<div className="col-span-12 tablet:col-span-6 laptop:col-span-4">
 						<FeatureFacilitie
 							icon={<IconUsers size={44} className="text-main-gold" />}
 							title="Ilość miejsc"
 							feature="6-8"
 						/>
 					</div>
-					<div className="col-span-4">
+					<div className="col-span-12 tablet:col-span-6 laptop:col-span-4">
 						<FeatureFacilitie
 							icon={<IconBed size={44} className="text-main-gold" />}
 							title="Łóżka"
 							feature="Pojedyncze/Podwójne"
 						/>
 					</div>
-					<div className="col-span-4">
+					<div className="col-span-12 tablet:col-span-6 laptop:col-span-4">
 						<FeatureFacilitie
 							icon={<IconFlame size={44} className="text-main-gold" />}
 							title="Miejsce na"
 							feature="Ognisko"
 						/>
 					</div>
-					<div className="col-span-4">
+					<div className="col-span-12 tablet:col-span-6 laptop:col-span-4">
 						<FeatureFacilitie
 							icon={<IconCarGarage size={44} className="text-main-gold" />}
 							title="Miejsce"
@@ -152,8 +152,8 @@ const AboutPage = () => {
 				</div>
 			</Section>
 
-			<Section className="bg-gray-100">
-				<div className="mb-20 flex justify-center">
+			<Section className="bg-gray-100 max-tablet:pb-0">
+				<div className="mb-[3.125rem] flex justify-center laptop:mb-20">
 					<SectionTitle level={3}>Galeria domku</SectionTitle>
 				</div>
 				<HouseGallery />

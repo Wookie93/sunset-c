@@ -12,7 +12,7 @@ export const PriceItem = ({
 	priceListTerms,
 }: PriceItemProps) => {
 	return (
-		<div className="flex min-h-[35.625rem] flex-col justify-between rounded-lg border border-gray-200 p-6">
+		<div className="flex min-h-[28.625rem] flex-col justify-between rounded-lg border border-gray-200 p-6 tablet:min-h-[35.625rem]">
 			<div className="space-y-6">
 				<div className="space-y-3 text-center">
 					<SectionTitle

@@ -17,9 +17,11 @@ export const Baner = ({ title, description }: BanerProps) => {
 				sizes="100vw"
 				className="object-cover mix-blend-soft-light grayscale"
 			/>
-			<div className="container mx-auto grid grid-cols-12 pt-40">
-				<div className="col-span-4 space-y-2">
-					<h1 className="text-[2.625rem] font-bold">{title}</h1>
+			<div className="container mx-auto grid grid-cols-12 pb-6 pt-32 laptop:pt-40">
+				<div className="col-span-12 space-y-2 laptop:col-span-4">
+					<h1 className="text-[1.875rem] font-bold laptop:text-[2.625rem]">
+						{title}
+					</h1>
 					<Description>{description}</Description>
 				</div>
 			</div>
