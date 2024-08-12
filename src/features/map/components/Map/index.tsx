@@ -33,7 +33,7 @@ export const Map = () => {
 	}, [center.lng, center.lat, zoom]);
 
 	return (
-		<div className="relative h-[31.25rem] w-full">
+		<div className="relative h-[20rem] w-full tabletLg:h-[25rem] laptop:h-[31.25rem]">
 			<div ref={mapContainer} className="absolute h-full w-full" />
 		</div>
 	);

@@ -70,7 +70,7 @@ export const ContactSection = () => {
 						<Description className="text-gray-900">
 							Zadzwoń lub wyślij wiadomość, aby zarezerwować nasz domek.
 						</Description>
-						<ButtonLink href="/" type="darken">
+						<ButtonLink href="/contact" type="darken">
 							Przejdź do kontaktu
 						</ButtonLink>
 					</div>

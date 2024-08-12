@@ -29,7 +29,7 @@ const ContactPage = () => {
 
 			<Section className="container mx-auto">
 				<div className="grid grid-cols-12">
-					<div className="col-span-5 space-y-10">
+					<div className="col-span-12 space-y-10 tabletLg:col-span-5">
 						<div className="space-y-4">
 							<IconMail size={32} className="text-gray-900" />
 							<div className="space-y-2">
@@ -75,7 +75,7 @@ const ContactPage = () => {
 						<ContactForm />
 					</div>
 
-					<div className="col-span-1 pt-[3.125rem] tabletLg:col-span-6 tabletLg:col-start-7 tabletLg:pt-0">
+					<div className="col-span-12 pt-[3.125rem] tabletLg:col-span-6 tabletLg:col-start-7 tabletLg:pt-0">
 						<div className="relative h-lvh max-h-[21.875rem] laptop:max-h-[42.375rem]">
 							<NextImage
 								fill
@@ -93,15 +93,15 @@ const ContactPage = () => {
 
 			<Section className="container mx-auto">
 				<div className="grid grid-cols-12">
-					<div className="col-span-4">
+					<div className="col-span-12 mb-5 tabletLg:col-span-4 tabletLg:mb-0">
 						<SectionTitle level={3}>
 							Sunset House - najczęściej zadawane pytania
 						</SectionTitle>
 					</div>
-					<div className="col-span-6 col-start-7">
+					<div className="col-span-12 tabletLg:col-span-6 tabletLg:col-start-7">
 						<Accordion type="single" collapsible>
 							<AccordionItem value="item-1">
-								<AccordionTrigger>
+								<AccordionTrigger className="text-left">
 									<Title className="!font-bold">
 										W jakich godzinach w domach trwa doba hotelowa?
 									</Title>

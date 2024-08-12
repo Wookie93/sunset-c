@@ -1,10 +1,14 @@
+"use client";
+
 import NextImage from "next/image";
 import { Heading, Socials, SunsetButton } from "@/features/homepage";
 import { Button } from "@/components/ui/button";
 import { IconMouse } from "@tabler/icons-react";
 import { Description } from "@/components/Description";
+import { useRouter } from "next/navigation";
 
 export const Hero = () => {
+	const route = useRouter();
 	return (
 		<div className="relative h-screen min-h-[40rem] bg-gray-700 max-tablet:max-h-[52.25rem]">
 			<NextImage
@@ -37,7 +41,10 @@ export const Hero = () => {
 							atrakcje turystyczne w okolicy umilą Twój pobyt.
 						</Description>
 						<div className="flex flex-row space-x-8 max-[390px]:flex-col max-[390px]:space-x-0 max-[390px]:space-y-4">
-							<SunsetButton text="Dowiedz się więcej" />
+							<SunsetButton
+								text="Dowiedz się więcej"
+								onClick={() => route.push("/about")}
+							/>
 							<SunsetButton text="Zarezerwuj teraz" />
 						</div>
 					</div>

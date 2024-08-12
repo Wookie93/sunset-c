@@ -17,7 +17,7 @@ const NeighborhoodPage = () => {
 
 			<Section className="container mx-auto">
 				<div className="grid tabletLg:grid-cols-12">
-					<div className="content-center space-y-6 px-5 tabletLg:col-span-5 tabletLg:col-start-1 tabletLg:px-0">
+					<div className="order-2 content-center space-y-6 px-5 tabletLg:order-1 tabletLg:col-span-5 tabletLg:col-start-1 tabletLg:px-0">
 						<SectionTitle level={3}>Odkryj Gorce</SectionTitle>
 						<Description className="text-gray-600">
 							Gorce to wyjątkowo urokliwe góry. Jest tu spokojniej i ciszej niż
@@ -30,7 +30,7 @@ const NeighborhoodPage = () => {
 							średniowiecza (m.in. w Dębnie i w Łopusznej).
 						</Description>
 					</div>
-					<div className="col-span-1 pt-[3.125rem] tabletLg:col-span-6 tabletLg:col-start-7 tabletLg:pt-0">
+					<div className="order-1 col-span-1 pb-[3.125rem] tabletLg:order-2 tabletLg:col-span-6 tabletLg:col-start-7 tabletLg:pb-0">
 						<div className="relative h-lvh max-h-[21.875rem] laptop:max-h-[40.625rem]">
 							<NextImage
 								fill
@@ -60,7 +60,7 @@ const NeighborhoodPage = () => {
 							wokół Tatr.
 						</Description>
 					</div>
-					<div className="order-1 col-span-1 pt-[3.125rem] tabletLg:col-span-6 tabletLg:col-start-1 tabletLg:pt-0">
+					<div className="order-1 col-span-1 pb-[3.125rem] tabletLg:col-span-6 tabletLg:col-start-1 tabletLg:pb-0">
 						<div className="relative h-lvh max-h-[21.875rem] laptop:max-h-[40.625rem]">
 							<NextImage
 								fill
@@ -76,7 +76,7 @@ const NeighborhoodPage = () => {
 
 			<Section className="container mx-auto">
 				<div className="grid tabletLg:grid-cols-12">
-					<div className="content-center space-y-6 px-5 tabletLg:col-span-5 tabletLg:col-start-1 tabletLg:px-0">
+					<div className="order-2 content-center space-y-6 px-5 tabletLg:order-1 tabletLg:col-span-5 tabletLg:col-start-1 tabletLg:px-0">
 						<SectionTitle level={3}>Relaks na termach</SectionTitle>
 						<Description className="text-gray-600">
 							A może tak relaks w ciepłej wodzie z wnętrza ziemi? Na Podhalu
@@ -89,7 +89,7 @@ const NeighborhoodPage = () => {
 							widok na Tatry.
 						</Description>
 					</div>
-					<div className="col-span-1 pt-[3.125rem] tabletLg:col-span-6 tabletLg:col-start-7 tabletLg:pt-0">
+					<div className="order-1 col-span-1 pb-[3.125rem] tabletLg:order-2 tabletLg:col-span-6 tabletLg:col-start-7 tabletLg:pb-0">
 						<div className="relative h-lvh max-h-[21.875rem] laptop:max-h-[40.625rem]">
 							<NextImage
 								fill
@@ -118,7 +118,7 @@ const NeighborhoodPage = () => {
 							pochodniami, który przyjedzie po Was pod sam domek!
 						</Description>
 					</div>
-					<div className="order-1 col-span-1 pt-[3.125rem] tabletLg:col-span-6 tabletLg:col-start-1 tabletLg:pt-0">
+					<div className="order-1 col-span-1 pb-[3.125rem] tabletLg:col-span-6 tabletLg:col-start-1 tabletLg:pb-0">
 						<div className="relative h-lvh max-h-[21.875rem] laptop:max-h-[40.625rem]">
 							<NextImage
 								fill
