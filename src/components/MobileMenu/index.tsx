@@ -3,8 +3,9 @@ import { cn } from "@/lib/utils";
 import { useNavigationContext } from "@/providers/navigation-provider";
 import { Navigation } from "@/components/Navigation";
 import { Socials } from "@/features/homepage";
+import { ContenfulNavigationLinks } from "@/types/contefulTypes";
 
-export const MobileMenu = () => {
+export const MobileMenu = ({navigationLinks}:ContenfulNavigationLinks) => {
 	const { isOpen } = useNavigationContext();
 
 	return (
@@ -17,7 +18,7 @@ export const MobileMenu = () => {
 			)}
 		>
 			<div className="container mx-auto mt-[3.25rem] flex h-[calc(100vh-11.25rem)] flex-col items-center justify-between pb-11">
-				<Navigation className="items-center space-y-12" />
+				<Navigation navigationLinks={navigationLinks} className="items-center space-y-12" />
 				<Socials />
 			</div>
 		</div>

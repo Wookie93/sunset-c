@@ -1,12 +1,11 @@
-type PriceListTermProps = {
-	id: number;
-	title: string;
-};
+import { ContentfulButton } from "./contefulTypes";
+
 
 export type PriceItemProps = {
 	id?: number;
 	title: string;
 	price: number;
 	hourTitle: string;
-	priceListTerms: PriceListTermProps[];
+	priceListTerms: string[];
+	button: ContentfulButton
 };

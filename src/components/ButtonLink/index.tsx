@@ -5,12 +5,13 @@ import { IconChevronRight } from "@tabler/icons-react";
 
 type ButtonLinkProps = LinkProps & {
 	children: ReactNode;
+	href: string;
 	type: "primary" | "bordered" | "darken";
 };
 
 export const ButtonLink = ({
 	href,
-	type,
+	type, 
 	children,
 	...props
 }: ButtonLinkProps) => {

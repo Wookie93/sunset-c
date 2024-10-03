@@ -1,12 +1,17 @@
 import { NavLink } from "@/components/NavLink";
 import { HTMLAttributes } from "react";
 import { clsx } from "clsx";
+import { ContenfulNavigationLink } from "@/types/contefulTypes";
+
 
 type NavigationProps = {
 	className?: HTMLAttributes<string>["className"];
+	navigationLinks: ContenfulNavigationLink[]
 };
 
-export const Navigation = ({ className }: NavigationProps) => {
+
+export const Navigation = ({ className, navigationLinks}: NavigationProps) => {
+
 	return (
 		<nav>
 			<ul
@@ -15,21 +20,12 @@ export const Navigation = ({ className }: NavigationProps) => {
 					[className ?? ""]: true,
 				})}
 			>
-				<NavLink href="/about" aria-label="O domku">
-					O domku
-				</NavLink>
-				<NavLink href="/gallery" aria-label="Galeria">
-					Galeria
-				</NavLink>
-				<NavLink href="/pricing" aria-label="Cennik">
-					Cennik
-				</NavLink>
-				<NavLink href="/neighborhood" aria-label="Okolica">
-					Okolica
-				</NavLink>
-				<NavLink href="/contact" aria-label="Kontakt">
-					Kontakt
-				</NavLink>
+				{navigationLinks && navigationLinks.map((el,index) => (
+					<NavLink key={!el.sys ? index : el.sys.id} href={el.linkTo.slug} aria-label={el.name}>
+						{el.name}
+					</NavLink>
+				))}
+
 			</ul>
 		</nav>
 	);
