@@ -20,7 +20,6 @@ export const GalleryEntry = ({ params, pageList }: GalleryEntryProps) => {
 	const {modulesCollection, imagesCollection} = params;
 	const {SecondaryHero, ContactSection: ContactSectionModule} = groupByTypename(modulesCollection.items);
 
-	console.log(SecondaryHero)
 	return (
 		<>
 {			!SecondaryHero ? null : <Baner

@@ -21,7 +21,7 @@ async function getGalleryContent() {
 
 const GalleryPage = async () => {
 
-	const {metaTitle, metaDescription, modulesCollection} = await getGalleryContent();
+	const {metaTitle ='Sunset house', metaDescription ='Sunset house', modulesCollection} = await getGalleryContent();
 	const {SecondaryHero, ContentSection, ContactSection: ContactSectionModule} = groupByTypename(modulesCollection.items);
 
 	console.log(ContactSection)
