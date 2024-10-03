@@ -36,7 +36,7 @@ const NeighborhoodPage = async () => {
 			/>
 
 			{ContentSection.map((item:any, index:number) => (
-				<Section className={`container mx-auto ${index % 2 == 0 ? '' : 'bg-gray-100'}`}>
+				<Section key={index} className={`container mx-auto ${index % 2 == 0 ? '' : 'bg-gray-100'}`}>
 					<div className="grid tabletLg:grid-cols-12">
 						<div className={`${item.imageAtRight ? 'order-2 content-center space-y-6 px-5 tabletLg:order-1 tabletLg:col-span-5 tabletLg:col-start-1 tabletLg:px-0' 
 							: 'order-2 content-center space-y-6 px-5 tabletLg:col-span-5 tabletLg:col-start-8 tabletLg:px-0'}`}>
