@@ -45,11 +45,10 @@ export const HouseGallery = ({data}: HouseGalleryProps) => {
 			onSwiper={(swiper) => console.log(swiper)}
 		>
 			{data.map((slide: slideType, index:number) => (
-				<SwiperSlide>
+				<SwiperSlide key={index} >
 					{({ isActive }) => (
 						<div className="relative min-h-[19.75rem] bg-gray-300">
 							<NextImage
-								key={index}
 								fill
 								src={slide.url}
 								alt={slide.title}

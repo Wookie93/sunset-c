@@ -17,7 +17,7 @@ type GalleryEntryProps = {
 };
 
 export const GalleryEntry = ({ params, pageList }: GalleryEntryProps) => {
-	const {metaTitle, metaDescription, modulesCollection, imagesCollection} = params;
+	const {modulesCollection, imagesCollection} = params;
 	const {SecondaryHero, ContactSection: ContactSectionModule} = groupByTypename(modulesCollection.items);
 
 	console.log(SecondaryHero)
