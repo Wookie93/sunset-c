@@ -1,3 +1,4 @@
+import dynamic from 'next/dynamic';
 import { Baner } from "@/components/Baner";
 import React from "react";
 import { Section } from "@/components/Section";
@@ -8,7 +9,6 @@ import {
 } from "@tabler/icons-react";
 import { Title } from "@/components/Title";
 import { Description } from "@/components/Description";
-import { Map } from "@/features/map";
 import NextImage from "next/image";
 import { ContactForm } from "@/components/ContactForm";
 import { SectionTitle } from "@/components/SectionTitle";
@@ -23,6 +23,9 @@ import { ContactPageResponse } from "@/types/contefulTypes";
 import { GET_CONTACT_PAGE } from "@/lib/queries/contact-queries";
 import { groupByTypename } from "@/lib/utils";
 import Head from "next/head";
+
+const Map = dynamic(() => import('@/features/map/index'), { ssr: false });
+
 
 async function getContactPageContent() {
 	const data = await client.request<ContactPageResponse>(GET_CONTACT_PAGE);
