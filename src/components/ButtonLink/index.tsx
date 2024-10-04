@@ -6,7 +6,7 @@ import { IconChevronRight } from "@tabler/icons-react";
 type ButtonLinkProps = LinkProps & {
 	children: ReactNode;
 	href: string;
-	className: string;
+	className?: string;
 	pathname?: string;
 	type: "primary" | "bordered" | "darken";
 };
