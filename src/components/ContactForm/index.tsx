@@ -12,27 +12,27 @@ import emailjs from '@emailjs/browser';
 
 export const ContactForm = () => {
 	const form = useRef<HTMLFormElement>(null);
-	
+
 	const [state, action] = useTypeSafeFormState(contactSchema, async (formData) => {
 		if (form.current) {
 			try {
 				const result = await emailjs.send(
-					'service_2t2wypm',
-					'template_tryovbl',
+					'service_9gsreds',
+					'template_eryn7ux',
 					{
 						email: formData.email,
 						message: formData.message,
 					},
-					'Y6QAP3EoAbOiPYDZE'
+					'qjn4AcMuVzW8yEKN_'
 				);
 				console.log('SUCCESS!', result.text);
 				form.current.reset();
 			} catch (error) {
-				console.log('FAILED...', error);
+				console.error('FAILED...', error);
 			}
 		}
 	});
-	
+
 	return (
 		<form ref={form} onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
 			e.preventDefault();
