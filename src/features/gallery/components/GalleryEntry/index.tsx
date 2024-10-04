@@ -16,8 +16,10 @@ type GalleryEntryProps = {
 	pageList:{pageName:string; slug: string}[]
 };
 
-export const GalleryEntry = ({ params, pageList }: GalleryEntryProps) => {
-	const {modulesCollection={}, imagesCollection} = params;
+export const GalleryEntry = ({ params, pageList}: GalleryEntryProps) => {
+
+	const {modulesCollection, imagesCollection} = params;
+
 	const {SecondaryHero, ContactSection: ContactSectionModule} = groupByTypename(modulesCollection.items);
 
 	return (
@@ -33,20 +35,22 @@ export const GalleryEntry = ({ params, pageList }: GalleryEntryProps) => {
 					<aside className="col-span-12 mb-6 max-h-[4.125rem] rounded-xl border border-gray-200 p-2 tablet:col-span-4 tablet:mb-0 tabletLg:col-span-3 laptop:max-h-[8.125rem] laptop:p-4">
 						<ul>
 							{pageList.map((el:{pageName:string; slug: string}, index:number) => (
-								<li
-									key={index}
-									className={clsx({
-										"laptop:py-3": true,
-										"border-b border-gray-200": index === 0,
-									})}
-								>
-									<NextLink
-										href={`/gallery/${el.slug}`}
-										className="text-xs laptop:text-base"
+								el.slug !== "/galeria" && (
+									<li
+										key={index}
+										className={clsx({
+											"laptop:py-3": true,
+											"border-b border-gray-200": index === 0,
+										})}
 									>
-										{el.pageName}
-									</NextLink>
-								</li>
+										<NextLink
+											href={`${el.slug}`}
+											className="text-xs laptop:text-base"
+										>
+											{el.pageName}
+										</NextLink>
+									</li>
+								)
 							))}
 						</ul>
 					</aside>
@@ -73,7 +77,7 @@ export const GalleryEntry = ({ params, pageList }: GalleryEntryProps) => {
 					</div>
 				</div>
 			</Section>
-			{!ContactSectionModule ? null : <ContactSection data={ContactSectionModule[0]} />}
+			{ContactSectionModule ? <ContactSection data={ContactSectionModule[0]} /> : null}
 		</>
 	);
 };

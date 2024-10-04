@@ -52,7 +52,7 @@ export function useMediaValues(
 				mediaQuery.removeEventListener("change", onSizeChange);
 			}
 		};
-	}, [medias, columns, gap]);
+	}, [values.columns, values.gap]);
 
 	return values;
 }

@@ -13,19 +13,23 @@ import { groupByTypename } from "@/lib/utils";
 import Head from "next/head";
 
 async function getGalleryContent() {
-	const data = await client.request<GalleryResponse>(GET_GALLERY, {
-	  slug: 'galeria'
-	});
-	return data.galleryCollection.items[0]
+	try{
+		const data = await client.request<GalleryResponse>(GET_GALLERY, {
+			slug: '/galeria'
+		  });
+		  return data.galleryCollection.items[0]
+	} catch(error){
+		console.error('Error generating static params:', error);
+		return [];
+	}
   }
 
 const GalleryPage = async () => {
 
 	const {metaTitle ='Sunset house', metaDescription ='Sunset house', modulesCollection} = await getGalleryContent();
 	const {SecondaryHero, ContentSection, ContactSection: ContactSectionModule} = groupByTypename(modulesCollection.items);
-
-	console.log(ContactSection)
-
+	const data = await getGalleryContent();
+	console.log(data)
 	return (
 		<>
 			<Head>
@@ -53,7 +57,7 @@ const GalleryPage = async () => {
 									</Description>
 								))}
 							</div>
-							<ButtonLink type="bordered" href={`/${el.linkTo.slug}`}>
+							<ButtonLink type="bordered" href={`${el.linkTo.slug}`}>
 								Zobacz więcej
 							</ButtonLink>
 						</div>

@@ -2,7 +2,6 @@
 
 import NextLink from "next/link";
 import { Logo } from "@/assets/logo/Logo";
-import { PrimaryButton } from "@/components/PrimaryButton";
 import { clsx } from "clsx";
 import { MobileMenuHandler } from "@/components/MobileMenuHandler";
 import { useNavigationContext } from "@/providers/navigation-provider";
@@ -10,6 +9,7 @@ import { IconMenu2, IconX } from "@tabler/icons-react";
 import { Navigation } from "../Navigation";
 import { usePathname } from "next/navigation";
 import { ContenfulHeaderModuleItem, ContenfulNavigationLink } from "@/types/contefulTypes";
+import { ButtonLink } from "../ButtonLink";
 
 interface HeaderProps{
 	headerData: {
@@ -29,7 +29,8 @@ interface HeaderProps{
 export const Header = ({headerData, navigationLinks}:HeaderProps) => {
 	const pathname = usePathname();
 	
-	console.log(headerData)
+	const {modulesCollection} = headerData
+	console.log(modulesCollection)
 
 	const { isOpen, setIsOpen } = useNavigationContext();
 	return (
@@ -50,14 +51,14 @@ export const Header = ({headerData, navigationLinks}:HeaderProps) => {
 					)}
 					icon={isOpen ? <IconX /> : <IconMenu2 />}
 				/>
-				<PrimaryButton
-					className={clsx({
-						"hidden laptop:block": true,
-						"!bg-gray-900 text-white": pathname !== "/",
-					})}
+				<ButtonLink
+					className="hidden laptop:block"
+					type="primary"
+					href={modulesCollection.items[1].linkTo.slug}
+					pathname={pathname}
 				>
-					Zarezerwuj teraz
-				</PrimaryButton>
+					{modulesCollection.items[1].textOnButton}
+				</ButtonLink>
 			</div>
 		</header>
 	);

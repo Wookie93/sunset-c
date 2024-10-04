@@ -65,14 +65,12 @@ export type ContentfulFooter = {
 }
 
 export type ContenfulHeaderModuleItem = {
-  __typename: string;
-} | {
   textOnButton: string;
   isSecondary: boolean;
   isPrimaryBlack: boolean;
   linkTo: {
     slug: string;
-  };
+  }
 }
 
 
