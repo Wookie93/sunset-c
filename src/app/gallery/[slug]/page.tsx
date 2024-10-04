@@ -1,4 +1,4 @@
-// import { Metadata } from "next";
+import { Metadata } from "next";
 import { GalleryEntry } from "@/features/gallery";
 import client from "@/lib/contentful";
 import { GET_ALL_GALLERY_SLUGS, GET_GALLERY } from "@/lib/queries/gallery-queries";
@@ -13,7 +13,6 @@ export async function generateStaticParams() {
 			slug: item.slug.replace('galeria/', ''),
 			pageName: item.pageName,
 		  	}));
-		  console.log(arrayWithSlugs)
 	return arrayWithSlugs
 }
 
@@ -25,22 +24,22 @@ async function getGallerySubpageContent(slug: string) {
 }
 
 
-// export async function generateMetadata({
-// 	params,
-//   }: {
-// 	params: { slug: string };
-//   }): Promise<Metadata> {
-// 	const galleryData = await getGallerySubpageContent(params.slug);
+export async function generateMetadata({
+	params,
+  }: {
+	params: { slug: string };
+  }): Promise<Metadata> {
+	const galleryData = await getGallerySubpageContent(params.slug);
 	
-// 	return {
-// 	  metadataBase: new URL("https://sunset-house.com"),
-// 	  alternates: {
-// 		canonical: `https://sunset-house.com/galeria/${params.slug}`,
-// 	  },
-// 	  title: galleryData?.title || 'Galeria',
-// 	  description: galleryData?.description || 'Zobacz domek',
-// 	};
-//   }
+	return {
+	  metadataBase: new URL("https://sunset-house.com"),
+	  alternates: {
+		canonical: `https://sunset-house.com/galeria/${params.slug}`,
+	  },
+	  title: galleryData?.metaTitle || 'Galeria',
+	  description: galleryData?.metaDescription || 'Zobacz domek',
+	};
+  }
 
   
   export default async function GalleryEntryPage({
@@ -48,13 +47,13 @@ async function getGallerySubpageContent(slug: string) {
   }: {
 	params: { slug: string }
   }) {
-	// Data fetching is now done directly in the component
+
 	const galleryData= await getGallerySubpageContent(params.slug);
-	// const { modulesCollection } = galleryData;
-	// console.log(modulesCollection)
+	const {galleryCollection} = await client.request<AllGalleryResponse>(GET_ALL_GALLERY_SLUGS);
+
 	return (
 	  <>
-		<GalleryEntry params={galleryData} pageList={[]}/>
+		<GalleryEntry params={galleryData} pageList={galleryCollection.items}/>
 	  </>
 	);
   }
