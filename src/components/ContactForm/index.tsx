@@ -12,7 +12,7 @@ import emailjs from '@emailjs/browser';
 
 export const ContactForm = () => {
 	const form = useRef<HTMLFormElement>(null);
-	
+
 	const [state, action] = useTypeSafeFormState(contactSchema, async (formData) => {
 		if (form.current) {
 			try {
@@ -28,11 +28,11 @@ export const ContactForm = () => {
 				console.log('SUCCESS!', result.text);
 				form.current.reset();
 			} catch (error) {
-				console.log('FAILED...', error);
+				console.error('FAILED...', error);
 			}
 		}
 	});
-	
+
 	return (
 		<form ref={form} onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
 			e.preventDefault();
