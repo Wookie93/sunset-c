@@ -85,7 +85,7 @@ ${BUTTON_FRAGMENT}
 `;
 
 export const GET_ALL_GALLERY_SLUGS = gql`
-  query {
+  query getAllGalleryInfo{
     galleryCollection {
       items {
         pageName
