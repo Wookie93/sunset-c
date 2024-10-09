@@ -75,7 +75,7 @@ export const Hero = ({data}: HeroProps) => {
 							/>
 							<SunsetButton
 								text={secondButton.textOnButton}
-								href={"/"}
+								href={secondButton.linkTo.slug ?? "/"}
 							/>
 						</div>
 					</div>
