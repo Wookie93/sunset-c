@@ -20,6 +20,12 @@ const nextConfig = {
         pathname: "/yc55p4rioxpm/**",
       },
       {
+        protocol: "https",
+        hostname: "videos.ctfassets.net",
+        port: "",
+        pathname: "/yc55p4rioxpm/**",
+      },
+      {
         protocol: "http",
         hostname: "localhost",
         port: "8080",

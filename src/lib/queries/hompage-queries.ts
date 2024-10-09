@@ -54,6 +54,14 @@ export const GET_HOMEPAGE = gql`
           title
         }
         imageAtRight
+        buttonsSectionCollection(limit:20){
+          items{
+            textOnButton
+            linkTo{
+              slug
+            }
+          }
+        }
       }
     }
     contactSection {

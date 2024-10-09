@@ -12,12 +12,12 @@ import { Section } from "@/components/Section";
 import { SectionTitle } from "@/components/SectionTitle";
 import { Title } from "@/components/Title";
 import { ButtonLink } from "@/components/ButtonLink";
-import { PlayButton } from "@/components/PlayButton";
 import { CallToAction } from "@/features/call-to-action";
 import { ContactSection } from "@/features/contact-section";
 import client from '@/lib/contentful';
 import { GET_HOMEPAGE } from "@/lib/queries/hompage-queries";
 import { HomepageResponse } from "@/types/contefulTypes";
+import { VideoWrapper } from "@/components/VideoWrapper";
 
 async function getHomepageContent() {
 	const data = await client.request<HomepageResponse>(GET_HOMEPAGE);
@@ -27,6 +27,7 @@ async function getHomepageContent() {
 export default async function Home() {
 
 	const {heroBaner, contentSectionCollection, cta, contactSection} = await getHomepageContent();
+
 
 	return (
 		<>
@@ -122,29 +123,31 @@ export default async function Home() {
 						</div>
 					</div>
 					<div className="mt-10 flex flex-col items-center justify-center max-tablet:space-y-4 tablet:flex-row tablet:space-x-6">
-						<ButtonLink type="bordered" href="/">
-							Dowiedz się więcej
+						<ButtonLink type="bordered" href={contentSectionCollection.items[1].buttonsSectionCollection.items[0].linkTo.slug}>
+							{contentSectionCollection.items[1].buttonsSectionCollection.items[0].textOnButton}
 						</ButtonLink>
-						<ButtonLink type="primary" href="/">
-							Zarezerwuj teraz
+						<ButtonLink type="primary" href={contentSectionCollection.items[1].buttonsSectionCollection.items[1].linkTo.slug}>
+							{contentSectionCollection.items[1].buttonsSectionCollection.items[1].textOnButton}
 						</ButtonLink>
 					</div>
 				</div>
 			</Section>
 
 			<Section className="mx-auto grid items-center tablet:container max-tablet:pb-0 tabletLg:grid-cols-12">
-				<div className="col-span-1 max-tabletLg:order-2 max-tabletLg:pt-[3.125rem] tabletLg:col-span-6">
+				{contentSectionCollection.items[2].image.url.includes('videos') ? 
+				<VideoWrapper />
+				: <div className="col-span-1 max-tabletLg:order-2 max-tabletLg:pt-[3.125rem] tabletLg:col-span-6">
 					<div className="relative flex h-lvh max-h-[24.375rem] items-center justify-center bg-gray-800 laptop:max-h-[32.75rem]">
 						<NextImage
-							fill
-							src={contentSectionCollection.items[2].image.url}
-							alt={contentSectionCollection.items[2].image.title}
-							sizes="27.033vw"
-							className="opacity-30 mix-blend-hard-light"
-						/>
-						<PlayButton />
+						fill
+						src={contentSectionCollection.items[2].image.url}
+						alt={contentSectionCollection.items[2].image.title}
+						sizes="27.033vw"
+						className="opacity-30 mix-blend-hard-light"
+					/>
 					</div>
 				</div>
+				}
 				<div className="col-span-1 space-y-12 max-tabletLg:order-1 max-tabletLg:px-5 tabletLg:col-span-5 tabletLg:col-start-8">
 					<SectionTitle level={3}>
 						{contentSectionCollection.items[2].title}
