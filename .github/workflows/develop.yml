@@ -37,6 +37,7 @@ jobs:
           CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
           CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
           CONTENTFUL_REVALIDATE_SECRET: ${{ secrets.CONTENTFUL_REVALIDATE_SECRET }}
+          PORT: 5000
         with:
           context: .
           build-args: |
@@ -44,6 +45,7 @@ jobs:
             "CONTENTFUL_ACCESS_TOKEN=${{ secrets.CONTENTFUL_ACCESS_TOKEN }}"
             "CONTENTFUL_SPACE_ID=${{ secrets.CONTENTFUL_SPACE_ID }}"
             "CONTENTFUL_REVALIDATE_SECRET=${{ secrets.CONTENTFUL_REVALIDATE_SECRET }}"
+            "PORT=5000"
           file: ./prod.Dockerfile
           push: true
           tags: ${{ env.DOCKER_HUB_REPOSITORY }}:latest
@@ -68,6 +70,7 @@ jobs:
           CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
           CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
           CONTENTFUL_REVALIDATE_SECRET: ${{ secrets.CONTENTFUL_REVALIDATE_SECRET }}
+          PORT: 5000
         run: |
           mkdir -p ~/.ssh
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
@@ -79,6 +82,7 @@ jobs:
           echo "CONTENTFUL_ACCESS_TOKEN=$CONTENTFUL_ACCESS_TOKEN" >> .env.production
           echo "CONTENTFUL_SPACE_ID=$CONTENTFUL_SPACE_ID" >> .env.production
           echo "CONTENTFUL_REVALIDATE_SECRET=$CONTENTFUL_REVALIDATE_SECRET" >> .env.production
+          echo "PORT=$PORT" >> .env.production
           # ... append other environment variables ...
 
           # Transfer the environment file and Docker Compose file to VPS
