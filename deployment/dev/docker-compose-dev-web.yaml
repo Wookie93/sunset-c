@@ -1,5 +1,5 @@
 services:
-  next-app:
+  sunset-house:
     image: 242912/sunset-house:latest
     container_name: sunset-house
     env_file:
