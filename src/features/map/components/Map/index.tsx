@@ -8,7 +8,7 @@ import L from "leaflet";
 import * as maptilersdk from "@maptiler/sdk";
 import "@maptiler/sdk/dist/maptiler-sdk.css";
 
-export const Map = () => {
+const Map = () => {
 	const mapContainer = useRef<HTMLDivElement | null>(null);
 	const map = useRef<L.Map | null>(null);
 	const center = { lng: 20.059325, lat: 49.595935 };
@@ -38,3 +38,5 @@ export const Map = () => {
 		</div>
 	);
 };
+
+export default Map

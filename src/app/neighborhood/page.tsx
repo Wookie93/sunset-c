@@ -5,7 +5,9 @@ import { Section } from "@/components/Section";
 import { SectionTitle } from "@/components/SectionTitle";
 import { Description } from "@/components/Description";
 import NextImage from "next/image";
-import { Map } from "@/features/map";
+import dynamic from "next/dynamic";
+
+const Map = dynamic(() => import('@/features/map/index'), { ssr: false });
 
 const NeighborhoodPage = () => {
 	return (

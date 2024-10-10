@@ -8,7 +8,6 @@ import {
 } from "@tabler/icons-react";
 import { Title } from "@/components/Title";
 import { Description } from "@/components/Description";
-import { Map } from "@/features/map";
 import NextImage from "next/image";
 import { ContactForm } from "@/components/ContactForm";
 import { SectionTitle } from "@/components/SectionTitle";
@@ -18,6 +17,9 @@ import {
 	AccordionItem,
 	AccordionTrigger,
 } from "@/components/ui/accordion";
+import dynamic from "next/dynamic";
+
+const Map = dynamic(() => import('@/features/map/index'), { ssr: false });
 
 const ContactPage = () => {
 	return (

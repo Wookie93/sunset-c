@@ -1,0 +1,16 @@
+services:
+  next-app:
+    image: 242912/sunset-house:latest
+    container_name: sunset-house
+    env_file:
+      - .env
+    environment:
+      CONTENTFUL_GRAPHQL_ENDPOINT: ${CONTENTFUL_GRAPHQL_ENDPOINT}
+      CONTENTFUL_ACCESS_TOKEN: ${CONTENTFUL_ACCESS_TOKEN}
+      CONTENTFUL_SPACE_ID: ${CONTENTFUL_SPACE_ID}
+      CONTENTFUL_REVALIDATE_SECRET: ${CONTENTFUL_REVALIDATE_SECRET}
+    volumes:
+      - ./.env.sunsethouse.production:/app/.env
+    restart: always
+    ports:
+      - 3001:3001
