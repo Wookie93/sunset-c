@@ -10,7 +10,7 @@ services:
       CONTENTFUL_SPACE_ID: ${CONTENTFUL_SPACE_ID}
       CONTENTFUL_REVALIDATE_SECRET: ${CONTENTFUL_REVALIDATE_SECRET}
     volumes:
-      - ./.env.sunsethouse.production:/app/.env
+      - ./.env.production:/app/.env
     restart: always
     ports:
       - 3001:3001
