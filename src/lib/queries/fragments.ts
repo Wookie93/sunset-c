@@ -35,8 +35,6 @@ export const BUTTON_FRAGMENT = gql`
         linkTo{
           slug
         }
-        isSecondary
-        isPrimaryBlack
   }
 `;
 
@@ -50,8 +48,6 @@ export const CTA_FRAGMENT = gql`
         linkTo{
           slug
         }
-        isSecondary
-        isPrimaryBlack
       }
       image{
         url
