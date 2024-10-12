@@ -10,6 +10,7 @@ export const PriceItem = ({
 	price,
 	hourTitle,
 	priceListTerms,
+	button
 }: PriceItemProps) => {
 	return (
 		<div className="flex min-h-[28.625rem] flex-col justify-between rounded-lg border border-gray-200 p-6 tablet:min-h-[35.625rem]">
@@ -31,17 +32,17 @@ export const PriceItem = ({
 					</div>
 				</div>
 				<ul className="space-y-2 text-left text-base">
-					{priceListTerms.map((term) => (
-						<li key={term.id} className="flex flex-row items-center space-x-3">
+					{priceListTerms.map((term,index) => (
+						<li key={index} className="flex flex-row items-center space-x-3">
 							<IconCircleCheckFilled size={16} className="text-lion" />
-							<span>{term.title}</span>
+							<span>{term}</span>
 						</li>
 					))}
 				</ul>
 			</div>
 			<div className="flex justify-center">
-				<ButtonLink href="#" type="darken">
-					Zarezerwuj teraz
+				<ButtonLink href={button.linkTo.slug ?? "/"} type="darken">
+					{button.textOnButton}
 				</ButtonLink>
 			</div>
 		</div>

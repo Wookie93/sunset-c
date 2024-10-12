@@ -8,15 +8,35 @@ import { useTypeSafeFormState } from "@/app/contact/typeSafeForm";
 import { contactSchema } from "@/app/contact/contactSchema";
 import { clsx } from "clsx";
 import { ErrorText } from "@/components/ErrorText";
+import emailjs from '@emailjs/browser';
 
 export const ContactForm = () => {
-	const formRef = useRef<HTMLFormElement | null>(null);
-	const [state, action] = useTypeSafeFormState(contactSchema, async (data) => {
-		console.log(data, "data");
-		formRef.current?.reset();
+	const form = useRef<HTMLFormElement>(null);
+
+	const [state, action] = useTypeSafeFormState(contactSchema, async (formData) => {
+		if (form.current) {
+			try {
+				await emailjs.send(
+					'service_9gsreds',
+					'template_eryn7ux',
+					{
+						email: formData.email,
+						message: formData.message,
+					},
+					'qjn4AcMuVzW8yEKN_'
+				);
+				form.current.reset();
+			} catch (error) {
+				console.error('FAILED...', error);
+			}
+		}
 	});
+
 	return (
-		<form ref={formRef} action={action}>
+		<form ref={form} onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
+			e.preventDefault();
+			action(new FormData(e.currentTarget));
+		}}>
 			<fieldset className="space-y-3">
 				<InputField
 					placeholder="Adres e-mail"

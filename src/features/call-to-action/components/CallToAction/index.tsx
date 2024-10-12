@@ -1,33 +1,40 @@
-"use client";
+
 
 import NextImage from "next/image";
 import { Description } from "@/components/Description";
 import { ButtonLink } from "@/components/ButtonLink";
-import { LinkProps } from "next/link";
 import { clsx } from "clsx";
-import { usePathname } from "next/navigation";
+
+import { ContentfulImage } from "@/types/contefulTypes";
 
 type CallToActionProps = {
-	title: string;
-	description: string;
-	buttonText: string;
-	buttonHref: LinkProps["href"];
+	data: {
+		title: string;
+		description: string;
+		image:ContentfulImage;
+		button:{
+			textOnButton:string | null;
+			linkTo:{
+				slug:string;
+			};
+			isSecondary:boolean | null;
+			isPrimaryBlack:boolean;
+		};
+	};
 };
 
 export const CallToAction = ({
-	title,
-	description,
-	buttonText,
-	buttonHref,
+	data
 }: CallToActionProps) => {
-	const pathname = usePathname();
+
+	const { title, description, image, button} = data;
 	return (
 		<div className="relative overflow-hidden bg-gray-900 tablet:h-screen tablet:max-h-[20rem]">
 			<NextImage
-				fill
+				fill 
 				priority
-				src="https://res.cloudinary.com/dstimijog/image/upload/v1720268783/sunset-house/call-to-action_mn5dri.jpg"
-				alt="Sunset House"
+				src={image.url}
+				alt={image.title}
 				className="object-cover opacity-70 mix-blend-hard-light grayscale"
 				sizes="100vw"
 			/>
@@ -35,7 +42,7 @@ export const CallToAction = ({
 				<div
 					className={clsx({
 						"tablet:col-span-6 tablet:col-start-1 tablet:col-end-4": true,
-						"tabletLg:col-end-6": pathname !== "/" && pathname !== "/about",
+						"tabletLg:col-end-6": true,
 					})}
 				>
 					<h3 className="text-[2rem] font-bold leading-10 text-gray-100">
@@ -44,8 +51,8 @@ export const CallToAction = ({
 				</div>
 				<div className="space-y-4 tablet:col-span-6 tablet:col-start-7 tablet:col-end-10">
 					<Description className="text-gray-100">{description}</Description>
-					<ButtonLink href={buttonHref ?? "/"} type="primary">
-						{buttonText}
+					<ButtonLink href={button.linkTo.slug ?? "/"} type="primary">
+						{button.textOnButton}
 					</ButtonLink>
 				</div>
 			</div>

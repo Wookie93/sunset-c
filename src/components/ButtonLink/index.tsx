@@ -5,13 +5,18 @@ import { IconChevronRight } from "@tabler/icons-react";
 
 type ButtonLinkProps = LinkProps & {
 	children: ReactNode;
+	href: string;
+	className?: string;
+	pathname?: string;
 	type: "primary" | "bordered" | "darken";
 };
 
 export const ButtonLink = ({
 	href,
-	type,
+	type, 
 	children,
+	className,
+	pathname,
 	...props
 }: ButtonLinkProps) => {
 	return (
@@ -25,6 +30,7 @@ export const ButtonLink = ({
 				"border border-solid border-gray-900 bg-transparent":
 					type === "bordered",
 				"bg-gray-900 !text-gray-100 hover:bg-gray-200": type === "darken",
+				"!bg-gray-900 text-white": pathname !== "/",
 			})}
 		>
 			{children}

@@ -4,29 +4,46 @@ import { ContactSection } from "@/features/contact-section";
 import { CallToAction } from "@/features/call-to-action";
 import { Section } from "@/components/Section";
 import { Pricing } from "@/features/pricing";
+import client from "@/lib/contentful";
+import { PricingPageResponse } from "@/types/contefulTypes";
+import { GET_PRICES } from "@/lib/queries/pricing-queries";
+import { groupByTypename } from "@/lib/utils";
+import Head from "next/head";
 
-const PricingPage = () => {
+
+async function getPricingContent() {
+	const data = await client.request<PricingPageResponse>(GET_PRICES);
+	return data.page
+  }
+
+
+const PricingPage = async () => {
+
+	const {metaTitle, metaDescription, modulesCollection} = await getPricingContent()
+	const result = groupByTypename(modulesCollection.items);
+	const {SecondaryHero, Paragraph, Pricing: PricingModule, Cta, ContactSection: ContactSectionModule} = result
+
 	return (
 		<>
+			<Head>
+        		<title>{metaTitle}</title>
+        		<meta name="description" content={metaDescription} />
+      		</Head>
 			<Baner
-				title="Cennik"
-				description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Velit euismod in pellentesque massa placerat."
+				title={SecondaryHero[0].title}
+				description={SecondaryHero[0].description}
+				image={SecondaryHero[0].image}
 			/>
 
 			<Section className="overflow-hidden">
 				<div className="container mx-auto">
-					<Pricing />
+					<Pricing description={Paragraph[0]} pricingData={PricingModule} />
 				</div>
 			</Section>
 
-			<CallToAction
-				buttonHref="/"
-				title="Nie znalazłeś interesującego pakietu?"
-				description="Odkryj urok Poreby Wielkiej i zatrzymaj się w naszym urokliwym domku letniskowym."
-				buttonText="Przejdź do kalendarza"
-			/>
+			<CallToAction data={Cta[0]} />
 
-			<ContactSection />
+			<ContactSection data={ContactSectionModule[0]} />
 		</>
 	);
 };

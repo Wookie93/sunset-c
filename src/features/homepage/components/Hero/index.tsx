@@ -5,17 +5,46 @@ import { Heading, Socials, SunsetButton } from "@/features/homepage";
 import { Button } from "@/components/ui/button";
 import { IconMouse } from "@tabler/icons-react";
 import { Description } from "@/components/Description";
-import { useRouter } from "next/navigation";
 
-export const Hero = () => {
-	const route = useRouter();
+type HeroProps = {
+	data: {
+		title: string;
+		description: string;
+		firstButton: {
+			textOnButton: string;
+			linkTo: {
+				slug: string | null;
+			};
+			isSecondary: boolean;
+			isPrimaryBlack: boolean;
+		};
+		secondButton: {
+			textOnButton: string;
+			linkTo: {
+				slug: string | null;
+			};
+			isSecondary: boolean;
+			isPrimaryBlack: boolean;
+		};
+		image: {
+			url: string;
+			width: number;
+			height: number;
+			title: string;
+		};
+	};
+};
+
+export const Hero = ({data}: HeroProps) => {
+	const {title, description, firstButton, secondButton, image} = data;
+
 	return (
 		<div className="relative h-screen min-h-[40rem] bg-gray-700 max-tablet:max-h-[52.25rem]">
 			<NextImage
 				fill
 				priority
-				src="https://res.cloudinary.com/dstimijog/image/upload/v1719660072/sunset-house/image_ywbmsa.jpg"
-				alt="Sunset House"
+				src={image.url}
+				alt={image.title}
 				sizes="100vw"
 				className="mix-blend-soft-light grayscale"
 			/>
@@ -33,19 +62,19 @@ export const Hero = () => {
 			<div className="container relative top-1/2 mx-auto grid -translate-y-1/2 transform laptop:grid-cols-12">
 				<div className="col-span-12 grid laptop:col-span-6 laptop:col-start-7 laptop:grid-cols-6">
 					<div className="space-y-4 laptop:col-span-4 3xl:col-span-5">
-						<Heading className="text-white">Witamy w Sunset House</Heading>
+						<Heading className="text-white">{title}</Heading>
 						<Description className="text-white">
-							Odkryj urok naszej malowniczej wioski i ciesz się niezapomnianym
-							pobytem w Sunset House. <br />
-							Nasz profesjonalny zespół zapewni Ci doskonałą obsługę, a liczne
-							atrakcje turystyczne w okolicy umilą Twój pobyt.
+							{description}
 						</Description>
 						<div className="flex flex-row space-x-8 max-[390px]:flex-col max-[390px]:space-x-0 max-[390px]:space-y-4">
 							<SunsetButton
-								text="Dowiedz się więcej"
-								onClick={() => route.push("/about")}
+								text={firstButton.textOnButton}
+								href={firstButton.linkTo.slug ?? "/"}
 							/>
-							<SunsetButton text="Zarezerwuj teraz" />
+							<SunsetButton
+								text={secondButton.textOnButton}
+								href={secondButton.linkTo.slug ?? "/"}
+							/>
 						</div>
 					</div>
 				</div>

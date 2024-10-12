@@ -1,18 +1,37 @@
-"use client";
+'use client'
 
 import NextLink from "next/link";
-import { usePathname } from "next/navigation";
-import { LogoColor } from "@/assets/logo/LogoColor";
-import { LogoDark } from "@/assets/logo/LogoDark";
-import { Navigation } from "@/components/Navigation";
-import { PrimaryButton } from "@/components/PrimaryButton";
-import { clsx } from "clsx";
-import { MobileMenuHandler } from "@/components/MobileMenuHandler";
-import { useNavigationContext } from "@/providers/navigation-provider";
-import { IconMenu2, IconX } from "@tabler/icons-react";
+import {clsx} from "clsx";
+import {MobileMenuHandler} from "@/components/MobileMenuHandler";
+import {useNavigationContext} from "@/providers/navigation-provider";
+import {IconMenu2, IconX} from "@tabler/icons-react";
+import {Navigation} from "../Navigation";
+import {usePathname} from "next/navigation";
+import {ContenfulHeaderModuleItem, ContenfulNavigationLink} from "@/types/contefulTypes";
+import {ButtonLink} from "../ButtonLink";
+import {LogoDark} from "@/assets/logo/LogoDark";
+import {LogoColor} from "@/assets/logo/LogoColor";
 
-export const Header = () => {
+interface HeaderProps{
+	headerData: {
+		logo:{
+		  url: string;
+		}
+		logoDark:{
+		  url: string;
+		}
+		modulesCollection:{
+		  items: ContenfulHeaderModuleItem[];
+		}
+	  }
+	navigationLinks:ContenfulNavigationLink[]
+}
+
+export const Header = ({headerData, navigationLinks}:HeaderProps) => {
 	const pathname = usePathname();
+
+	const {modulesCollection} = headerData
+
 	const { isOpen, setIsOpen } = useNavigationContext();
 	return (
 		<header className="absolute left-0 right-0 top-0 z-[101] w-full py-6">
@@ -20,12 +39,10 @@ export const Header = () => {
 				<NextLink href="/">
 					{isOpen || pathname !== "/" ? <LogoDark /> : <LogoColor />}
 				</NextLink>
-				<Navigation
-					className={clsx(
+				<Navigation navigationLinks={navigationLinks} className={clsx(
 						"hidden laptop:flex",
 						pathname === "/" ? "text-white" : "",
-					)}
-				/>
+					)} />
 				<MobileMenuHandler
 					onClick={() => setIsOpen(!isOpen)}
 					className={clsx(
@@ -34,14 +51,14 @@ export const Header = () => {
 					)}
 					icon={isOpen ? <IconX /> : <IconMenu2 />}
 				/>
-				<PrimaryButton
-					className={clsx({
-						"hidden laptop:block": true,
-						"!bg-gray-900 text-white": pathname !== "/",
-					})}
+				<ButtonLink
+					className="hidden laptop:block"
+					type="primary"
+					href={modulesCollection.items[1].linkTo.slug}
+					pathname={pathname}
 				>
-					Zarezerwuj teraz
-				</PrimaryButton>
+					{modulesCollection.items[1].textOnButton}
+				</ButtonLink>
 			</div>
 		</header>
 	);

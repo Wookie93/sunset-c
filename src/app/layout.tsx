@@ -6,6 +6,9 @@ import { NavigationProvider } from "@/providers/navigation-provider";
 import { ReactNode } from "react";
 import { Body } from "@/components/Body";
 import { MobileMenu } from "@/components/MobileMenu";
+import client from "@/lib/contentful";
+import { GlobalInterface } from "@/types/contefulTypes";
+import { GET_GLOBAL_DATA } from "@/lib/queries/general-queries";
 
 export const metadata: Metadata = {
 	title: "Domek w górach na wynajem - komfortowy wypoczynek w sercu natury",
@@ -19,19 +22,27 @@ export const metadata: Metadata = {
 	},
 };
 
-export default function RootLayout({
+async function getGlobalContent() {
+	const data = await client.request<GlobalInterface>(GET_GLOBAL_DATA);
+	return data
+  }
+
+export default async function RootLayout({
 	children,
 }: Readonly<{
 	children: ReactNode;
 }>) {
+	const {header, navigation, footer} = await getGlobalContent();
+
+
 	return (
 		<html lang="en">
 			<NavigationProvider>
 				<Body>
-					<Header />
-					<MobileMenu />
+					<Header headerData={header} navigationLinks={navigation.menuItemCollection.items} />
+					<MobileMenu navigationLinks={navigation.menuItemCollection.items} />
 					<main>{children}</main>
-					<Footer />
+					<Footer footerData={footer}/>
 				</Body>
 			</NavigationProvider>
 		</html>

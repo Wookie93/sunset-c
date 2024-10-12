@@ -5,15 +5,30 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { PriceItem } from "@/components/PriceItem";
 import React, { useRef, useState } from "react";
 import type { Swiper as SwiperType } from "swiper/types";
-import { pricing } from "@/app/pricing/mock";
 import { SectionTitle } from "@/components/SectionTitle";
 import { Description } from "@/components/Description";
 import { clsx } from "clsx";
 import { RoundedButton } from "@/components/RoundedButton";
 import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
 import "swiper/css";
+import { ContentfulButton } from "@/types/contefulTypes";
 
-export const Pricing = () => {
+interface PricingModuleProps {
+	description:{
+		title: string;
+		description: string;
+	}
+	pricingData:{
+		name:string;
+		date:string;
+		price:number;
+		time:string;
+		features:string[]; 
+		buttonRef:ContentfulButton
+	}[]
+}
+
+export const Pricing = ({description, pricingData}: PricingModuleProps) => {
 	const swiperRef = useRef<SwiperType>();
 	const swiperInstanceRef = useRef<SwiperType>();
 	const [swiperActiveIndex, setSwiperActiveIndex] = useState(0);
@@ -23,11 +38,9 @@ export const Pricing = () => {
 			<div className="grid grid-cols-12">
 				<div className="col-span-12 tablet:col-span-4">
 					<div className="space-y-8">
-						<SectionTitle level={3}>Wybierz rezerwacje</SectionTitle>
+						<SectionTitle level={3}>{description.title}</SectionTitle>
 						<Description className="text-gray-600">
-							A short paragraph describing your pricing plans. Provide how
-							subscription or purchase of your service/product will benefit your
-							customer.
+						{description.description}
 						</Description>
 					</div>
 				</div>
@@ -100,14 +113,15 @@ export const Pricing = () => {
 						setSwiperSlidesCount(swiper.slides.length);
 					}}
 				>
-					{pricing.map((priceItem) => {
+					{pricingData.map((priceItem, index) => {
 						return (
-							<SwiperSlide key={priceItem.id}>
+							<SwiperSlide key={index}>
 								<PriceItem
-									title={priceItem.title}
+									title={priceItem.date}
 									price={priceItem.price}
-									hourTitle={priceItem.hourTitle}
-									priceListTerms={priceItem.priceListTerms}
+									hourTitle={priceItem.time}
+									priceListTerms={priceItem.features}
+									button={priceItem.buttonRef}
 								/>
 							</SwiperSlide>
 						);

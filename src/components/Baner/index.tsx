@@ -5,15 +5,19 @@ import NextImage from "next/image";
 type BanerProps = {
 	title: string;
 	description: string;
+	image:{
+		url:string;
+		title: string;
+	}
 };
 
-export const Baner = ({ title, description }: BanerProps) => {
+export const Baner = ({ title, description, image }: BanerProps) => {
 	return (
 		<div className="relative overflow-hidden bg-lion laptop:h-[25rem]">
 			<NextImage
 				fill
-				src="https://res.cloudinary.com/dstimijog/image/upload/v1721677331/sunset-house/subpage_baner_cr4ttl.jpg"
-				alt="Tatry i okolice"
+				src={image.url}
+				alt={image.title}
 				sizes="100vw"
 				className="object-cover mix-blend-soft-light grayscale"
 			/>

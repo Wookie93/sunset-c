@@ -1,3 +1,4 @@
+import dynamic from 'next/dynamic';
 import { Baner } from "@/components/Baner";
 import React from "react";
 import { Section } from "@/components/Section";
@@ -17,16 +18,37 @@ import {
 	AccordionItem,
 	AccordionTrigger,
 } from "@/components/ui/accordion";
-import dynamic from "next/dynamic";
+import client from "@/lib/contentful";
+import { ContactPageResponse } from "@/types/contefulTypes";
+import { GET_CONTACT_PAGE } from "@/lib/queries/contact-queries";
+import { groupByTypename } from "@/lib/utils";
+import Head from "next/head";
 
 const Map = dynamic(() => import('@/features/map/index'), { ssr: false });
 
-const ContactPage = () => {
+
+async function getContactPageContent() {
+	const data = await client.request<ContactPageResponse>(GET_CONTACT_PAGE);
+	return data.page
+  }
+
+const ContactPage = async () => {
+
+	const {metaTitle, metaDescription, modulesCollection} = await getContactPageContent()
+	const result = groupByTypename(modulesCollection.items);
+	const {SecondaryHero, ContactSection, FaqModule} = result;
+
 	return (
 		<>
+			<Head>
+        		<title>{metaTitle}</title>
+        		<meta name="description" content={metaDescription} />
+      		</Head>
+
 			<Baner
-				title="Kontakt"
-				description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Velit euismod in pellentesque massa placerat."
+				title={SecondaryHero[0].title}
+				description={SecondaryHero[0].description}
+				image={SecondaryHero[0].image}
 			/>
 
 			<Section className="container mx-auto">
@@ -35,15 +57,15 @@ const ContactPage = () => {
 						<div className="space-y-4">
 							<IconMail size={32} className="text-gray-900" />
 							<div className="space-y-2">
-								<Title className="!text-gray-900">Email</Title>
+								<Title className="!text-gray-900">{ContactSection[0].contactDataCollection.items[0].title}</Title>
 								<Description className="text-gray-700">
-									Napisz do nas
+								{ContactSection[0].contactDataCollection.items[0].subtitle}
 								</Description>
 								<a
-									href="mailto:rezerwacja@sunsethouse.com"
+									href={`mailto:${ContactSection[0].contactDataCollection.items[0].linkText}`}
 									className="block text-base font-normal text-lion underline"
 								>
-									rezerwacja@sunsethouse.com
+									{ContactSection[0].contactDataCollection.items[0].linkText}
 								</a>
 							</div>
 						</div>
@@ -51,15 +73,15 @@ const ContactPage = () => {
 						<div className="space-y-4">
 							<IconDeviceMobileVibration size={32} className="text-gray-900" />
 							<div className="space-y-2">
-								<Title className="!text-gray-900">Telefon</Title>
+								<Title className="!text-gray-900">{ContactSection[0].contactDataCollection.items[1].title}</Title>
 								<Description className="text-gray-700">
-									Zadzwoń do nas
+								{ContactSection[0].contactDataCollection.items[1].subtitle}
 								</Description>
 								<a
-									href="tel:+48573199465"
-									className="block text-base font-normal text-lion"
+									href={`mailto:${ContactSection[0].contactDataCollection.items[1].linkText}`}
+									className="block text-base font-normal text-lion underline"
 								>
-									+48 573 199 465
+									{ContactSection[0].contactDataCollection.items[1].linkText}
 								</a>
 							</div>
 						</div>
@@ -67,9 +89,9 @@ const ContactPage = () => {
 						<div className="space-y-4">
 							<IconMapPinDown size={32} className="text-gray-900" />
 							<div className="space-y-2">
-								<Title className="!text-gray-900">Biuro</Title>
+								<Title className="!text-gray-900">{ContactSection[0].contactDataCollection.items[2].title}</Title>
 								<address className="text-base font-normal not-italic text-gray-700">
-									ul. Poręba Wielka 123, 34-735 Niedźwiedź
+								{ContactSection[0].contactDataCollection.items[2].title}
 								</address>
 							</div>
 						</div>
@@ -81,8 +103,8 @@ const ContactPage = () => {
 						<div className="relative h-lvh max-h-[21.875rem] laptop:max-h-[42.375rem]">
 							<NextImage
 								fill
-								src="https://res.cloudinary.com/dstimijog/image/upload/v1722372612/contact_cityrt.jpg"
-								alt="Relaks na termach"
+								src={ContactSection[0].image.url}
+								alt={ContactSection[0].image.title}
 								sizes="27.033vw"
 								className="object-cover"
 							/>
@@ -97,59 +119,25 @@ const ContactPage = () => {
 				<div className="grid grid-cols-12">
 					<div className="col-span-12 mb-5 tabletLg:col-span-4 tabletLg:mb-0">
 						<SectionTitle level={3}>
-							Sunset House - najczęściej zadawane pytania
+							{FaqModule[0].title}
 						</SectionTitle>
 					</div>
 					<div className="col-span-12 tabletLg:col-span-6 tabletLg:col-start-7">
 						<Accordion type="single" collapsible>
-							<AccordionItem value="item-1">
-								<AccordionTrigger className="text-left">
-									<Title className="!font-bold">
-										W jakich godzinach w domach trwa doba hotelowa?
-									</Title>
-								</AccordionTrigger>
-								<AccordionContent>
-									<Description className="text-gray-600">
-										Please provide comprehensive answers to those questions. You
-										will save lots of time and money by eliminating the
-										necessity to give constant support. You also will keep your
-										clients time cause they will quickly find the answers to all
-										their questions.
-									</Description>
-								</AccordionContent>
-							</AccordionItem>
-							<AccordionItem value="item-2">
-								<AccordionTrigger>
-									<Title className="!font-bold">
-										Czy mogę zamówić śniadanie do domku?
-									</Title>
-								</AccordionTrigger>
-								<AccordionContent>
-									<Description className="text-gray-600">
-										Please provide comprehensive answers to those questions. You
-										will save lots of time and money by eliminating the
-										necessity to give constant support. You also will keep your
-										clients time cause they will quickly find the answers to all
-										their questions.
-									</Description>
-								</AccordionContent>
-							</AccordionItem>
-							<AccordionItem value="item-3">
-								<AccordionTrigger>
-									<Title className="!font-bold">
-										Jak wygląda dojazd do domku?
-									</Title>
-								</AccordionTrigger>
-								<AccordionContent>
-									<Description className="text-gray-600">
-										Please provide comprehensive answers to those questions. You
-										will save lots of time and money by eliminating the
-										necessity to give constant support. You also will keep your
-										clients time cause they will quickly find the answers to all
-										their questions.
-									</Description>
-								</AccordionContent>
-							</AccordionItem>
+							{FaqModule[0].faqCollection.items.map((faq:any, index:number) => (
+								<AccordionItem value="item-1" key={index}>
+									<AccordionTrigger className="text-left">
+										<Title className="!font-bold">
+											{faq.title}
+										</Title>
+									</AccordionTrigger>
+									<AccordionContent>
+										<Description className="text-gray-600">
+											{faq.description}
+										</Description>
+									</AccordionContent>
+								</AccordionItem>
+							))}
 						</Accordion>
 					</div>
 				</div>

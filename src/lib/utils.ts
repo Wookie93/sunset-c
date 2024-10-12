@@ -12,3 +12,18 @@ export function formatMoney(amount: number, currency = "PLN") {
 		currency,
 	}).format(amount);
 }
+
+
+  
+export function groupByTypename(items:any) {
+	return items.reduce((acc:any, item:any) => {
+	  const typename = item.typename || item.__typename;
+	  if (typename) {
+		if (!acc[typename]) {
+		  acc[typename] = [];
+		}
+		acc[typename].push(item);
+	  }
+	  return acc;
+	}, {});
+  }
