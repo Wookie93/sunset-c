@@ -40,25 +40,25 @@ export const GET_GLOBAL_DATA = gql`
                 fileName
             }
             modulesCollection{
-            items{
-                ... on Navigation{
-                __typename
+                items{
+                    ... on Navigation{
+                    __typename
+                    }
+                    ... on Button{
+                        ...ButtonFields
+                    }
                 }
-                ... on Button{
-                    ...ButtonFields
-                }
-            }
             }
         }
     }
 `
 export const GET_SLUGS = gql`
     query GetSlugs{
-      pageCollection{
-        items{
-            slug
-            pageName
+          pageCollection{
+            items{
+                slug
+                pageName
+            }
         }
-    }
     }
 `
