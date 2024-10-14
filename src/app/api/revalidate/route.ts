@@ -17,6 +17,8 @@ const routesToRevalidate: string[] = [
 
       console.log(secret, 'secret')
       console.log(process.env.CONTENTFUL_REVALIDATE_SECRET, 'CONTENTFUL_REVALIDATE_SECRET')
+      console.log(process.env.NODE_ENV, 'process.env')
+      console.log(process.env.PAYLOAD_SECRET, 'PAYLOAD_SECRET')
 
     if (secret !== process.env.CONTENTFUL_REVALIDATE_SECRET) {
       return NextResponse.json(
