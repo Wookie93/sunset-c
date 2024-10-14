@@ -5,7 +5,7 @@ import {
 	IconHeadset,
 	IconHomeHeart,
 	IconMessageDots,
-	IconSquareKey,
+	IconSquareKey, IconTrees,
 } from "@tabler/icons-react";
 import { Description } from "@/components/Description";
 import { Section } from "@/components/Section";
@@ -28,19 +28,19 @@ export default async function Home() {
 
 	const {heroBaner, contentSectionCollection, cta, contactSection} = await getHomepageContent();
 
-
 	return (
 		<>
 			<Hero data={heroBaner} />
 
 			<Section className="mx-auto tablet:container max-tablet:pb-0">
 				<div className="grid tabletLg:grid-cols-12">
-					<div className="content-center space-y-6 px-5 tabletLg:col-span-5 tabletLg:col-start-1 tabletLg:space-y-12 tabletLg:px-0">
+					<div
+						className="content-center space-y-6 px-5 tabletLg:col-span-5 tabletLg:col-start-1 tabletLg:space-y-12 tabletLg:px-0">
 						<SectionTitle level={3}>
 							{contentSectionCollection.items[0].title}
 						</SectionTitle>
 						<div className="flex max-w-[28.125rem] flex-row space-x-6">
-							<IconHomeHeart size={45} className="text-main-gold" stroke={2} />
+							<IconHomeHeart size={45} className="text-main-gold" stroke={2}/>
 							<div className="flex flex-col space-y-2">
 								<Title>{contentSectionCollection.items[0].contentCollection.items[0].title}</Title>
 								<Description className="text-gray-600">
@@ -49,11 +49,20 @@ export default async function Home() {
 							</div>
 						</div>
 						<div className="flex max-w-[28.125rem] flex-row space-x-6">
-							<IconHeadset size={45} className="text-main-gold" stroke={2} />
+							<IconHeadset size={45} className="text-main-gold" stroke={2}/>
 							<div className="flex flex-col space-y-2">
 								<Title>{contentSectionCollection.items[0].contentCollection.items[1].title}</Title>
 								<Description className="text-gray-600">
 									{contentSectionCollection.items[0].contentCollection.items[1].description}
+								</Description>
+							</div>
+						</div>
+						<div className="flex max-w-[28.125rem] flex-row space-x-6">
+							<IconTrees size={45} className="text-main-gold" stroke={2}/>
+							<div className="flex flex-col space-y-2">
+								<Title>{contentSectionCollection.items[0].contentCollection.items[2].title}</Title>
+								<Description className="text-gray-600">
+									{contentSectionCollection.items[0].contentCollection.items[2].description}
 								</Description>
 							</div>
 						</div>
@@ -134,8 +143,8 @@ export default async function Home() {
 			</Section>
 
 			<Section className="mx-auto grid items-center tablet:container max-tablet:pb-0 tabletLg:grid-cols-12">
-				{contentSectionCollection.items[2].image.url.includes('videos') ? 
-				<VideoWrapper />
+				{contentSectionCollection.items[2].image.url.includes('videos') ?
+				<VideoWrapper videoUrl={contentSectionCollection.items[2].image.url} />
 				: <div className="col-span-1 max-tabletLg:order-2 max-tabletLg:pt-[3.125rem] tabletLg:col-span-6">
 					<div className="relative flex h-lvh max-h-[24.375rem] items-center justify-center bg-gray-800 laptop:max-h-[32.75rem]">
 						<NextImage

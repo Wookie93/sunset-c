@@ -6,14 +6,15 @@ import { Description } from "@/components/Description";
 import NextImage from "next/image";
 import { Section } from "@/components/Section";
 import {
+	IconBath,
 	IconBed,
 	IconBookmarkEdit,
 	IconCarGarage,
 	IconFlame,
 	IconHomeCog,
-	IconMap2,
+	IconMap2, IconMonkeybar,
 	IconShieldChevron,
-	IconTags,
+	IconTags, IconToolsKitchen2,
 	IconUsers,
 	IconWifi,
 } from "@tabler/icons-react";
@@ -92,29 +93,29 @@ const AboutPage = async () => {
 						<NextLink href={InfoSection[0].infoLinksCollection.items[1].url || '/'}  className="flex flex-row items-center space-x-2">
 							<IconBookmarkEdit size={24} />
 							<p className="text-base font-normal text-gray-900">
-							{InfoSection[0].infoLinksCollection.items[1].title} 
+							{InfoSection[0].infoLinksCollection.items[1].title}
 							</p>
 						</NextLink>
 					</div>
 					<div className="col-span-6 laptop:col-span-3">
 						<NextLink
-							href={InfoSection[0].infoLinksCollection.items[2].url || '/'} 
+							href={InfoSection[0].infoLinksCollection.items[2].url || '/'}
 							className="flex flex-row items-center space-x-2"
 						>
 							<IconMap2 size={24} />
 							<p className="text-base font-normal text-gray-900">
-							{InfoSection[0].infoLinksCollection.items[2].title} 
+							{InfoSection[0].infoLinksCollection.items[2].title}
 							</p>
 						</NextLink>
 					</div>
 					<div className="col-span-6 laptop:col-span-3">
 						<NextLink
-							href={InfoSection[0].infoLinksCollection.items[3].url || '/'} 
+							href={InfoSection[0].infoLinksCollection.items[3].url || '/'}
 							className="flex flex-row items-center space-x-2"
 						>
 							<IconTags size={24} />
 							<p className="text-base font-normal text-gray-900">
-							{InfoSection[0].infoLinksCollection.items[3].title} 
+							{InfoSection[0].infoLinksCollection.items[3].title}
 							</p>
 						</NextLink>
 					</div>
@@ -126,59 +127,80 @@ const AboutPage = async () => {
 					<SectionTitle level={3}>{HomeFeatures[0].title}</SectionTitle>
 				</div>
 				<div className="mt-[3.125rem] grid grid-cols-12 gap-y-6 laptop:mt-20 laptop:gap-16">
-      <div className="col-span-12 tablet:col-span-6 laptop:col-span-4">
-        <FeatureFacilitie
-          icon={<IconHomeCog size={44} className="text-main-gold" />}
-          title={HomeFeatures[0].features[0].split(' - ')[0]} // "Powierzchnia domku"
-          feature={HomeFeatures[0].features[0].split(' - ')[1]} // "75m2"
-        />
-      </div>
-      <div className="col-span-12 tablet:col-span-6 laptop:col-span-4">
-        <FeatureFacilitie
-          icon={<IconWifi size={44} className="text-main-gold" />}
-          title={HomeFeatures[0].features[1].split(' - ')[0]} // "Internet"
-          feature={HomeFeatures[0].features[1].split(' - ')[1]} // "WiFi"
-        />
-      </div>
-      <div className="col-span-12 tablet:col-span-6 laptop:col-span-4">
-        <FeatureFacilitie
-          icon={<IconUsers size={44} className="text-main-gold" />}
-          title={HomeFeatures[0].features[2].split(' - ')[0]} // "Ilość miejsc"
-          feature={HomeFeatures[0].features[2].split(' - ')[1]} // "6-8"
-        />
-      </div>
-      <div className="col-span-12 tablet:col-span-6 laptop:col-span-4">
-        <FeatureFacilitie
-          icon={<IconBed size={44} className="text-main-gold" />}
-          title={HomeFeatures[0].features[3].split(' - ')[0]} // "Łóżka"
-          feature={HomeFeatures[0].features[3].split(' - ')[1]} // "Pojedyncze/Podwójne"
-        />
-      </div>
-      <div className="col-span-12 tablet:col-span-6 laptop:col-span-4">
-        <FeatureFacilitie
-          icon={<IconFlame size={44} className="text-main-gold" />}
-          title={HomeFeatures[0].features[4].split(' - ')[0]} // "Miejsce na"
-          feature={HomeFeatures[0].features[4].split(' - ')[1]} // "Ognisko"
-        />
-      </div>
-      <div className="col-span-12 tablet:col-span-6 laptop:col-span-4">
-        <FeatureFacilitie
-          icon={<IconCarGarage size={44} className="text-main-gold" />}
-          title={HomeFeatures[0].features[5].split(' - ')[0]} // "Własny"
-          feature={HomeFeatures[0].features[5].split(' - ')[1]} // "Parking"
-        />
-      </div>
-    </div>
+					<div className="col-span-12 tablet:col-span-6 laptop:col-span-4">
+						<FeatureFacilitie
+							icon={<IconHomeCog size={44} className="text-main-gold"/>}
+							title={HomeFeatures[0].features[0]?.split(' - ')[0]} // "Powierzchnia domku"
+							feature={HomeFeatures[0].features[0]?.split(' - ')[1]} // "75m2"
+						/>
+					</div>
+					<div className="col-span-12 tablet:col-span-6 laptop:col-span-4">
+						<FeatureFacilitie
+							icon={<IconWifi size={44} className="text-main-gold"/>}
+							title={HomeFeatures[0].features[1]?.split(' - ')[0]} // "Internet"
+							feature={HomeFeatures[0].features[1]?.split(' - ')[1]} // "WiFi"
+						/>
+					</div>
+					<div className="col-span-12 tablet:col-span-6 laptop:col-span-4">
+						<FeatureFacilitie
+							icon={<IconUsers size={44} className="text-main-gold"/>}
+							title={HomeFeatures[0].features[2]?.split(' - ')[0]} // "Ilość miejsc"
+							feature={HomeFeatures[0].features[2]?.split(' - ')[1]} // "6-8"
+						/>
+					</div>
+					<div className="col-span-12 tablet:col-span-6 laptop:col-span-4">
+						<FeatureFacilitie
+							icon={<IconBed size={44} className="text-main-gold"/>}
+							title={HomeFeatures[0].features[3]?.split(' - ')[0]} // "Łóżka"
+							feature={HomeFeatures[0].features[3]?.split(' - ')[1]} // "Pojedyncze/Podwójne"
+						/>
+					</div>
+					<div className="col-span-12 tablet:col-span-6 laptop:col-span-4">
+						<FeatureFacilitie
+							icon={<IconFlame size={44} className="text-main-gold"/>}
+							title={HomeFeatures[0].features[4]?.split(' - ')[0]} // "Miejsce na"
+							feature={HomeFeatures[0].features[4]?.split(' - ')[1]} // "Ognisko"
+						/>
+					</div>
+					<div className="col-span-12 tablet:col-span-6 laptop:col-span-4">
+						<FeatureFacilitie
+							icon={<IconCarGarage size={44} className="text-main-gold"/>}
+							title={HomeFeatures[0].features[5]?.split(' - ')[0]} // "Własny"
+							feature={HomeFeatures[0].features[5]?.split(' - ')[1]} // "Parking"
+						/>
+					</div>
+					<div className="col-span-12 tablet:col-span-6 laptop:col-span-4">
+						<FeatureFacilitie
+							icon={<IconBath size={44} className="text-main-gold"/>}
+							title={HomeFeatures[0].features[6]?.split(' - ')[0]}
+							feature={HomeFeatures[0].features[6]?.split(' - ')[1]}
+						/>
+					</div>
+					<div className="col-span-12 tablet:col-span-6 laptop:col-span-4">
+						<FeatureFacilitie
+							icon={<IconMonkeybar size={44} className="text-main-gold"/>}
+							title={HomeFeatures[0].features[7]?.split(' - ')[0]}
+							feature={HomeFeatures[0].features[7]?.split(' - ')[1]}
+						/>
+					</div>
+					<div className="col-span-12 tablet:col-span-6 laptop:col-span-4">
+						<FeatureFacilitie
+							icon={<IconToolsKitchen2 size={44} className="text-main-gold"/>}
+							title={HomeFeatures[0].features[8]?.split(' - ')[0]}
+							feature={HomeFeatures[0].features[8]?.split(' - ')[1]}
+						/>
+					</div>
+				</div>
 			</Section>
 
 			<Section className="bg-gray-100 max-tablet:pb-0">
 				<div className="mb-[3.125rem] flex justify-center laptop:mb-20">
 					<SectionTitle level={3}>{GallerySlider[0].title}</SectionTitle>
 				</div>
-				<HouseGallery data={GallerySlider[0].imagesCollection.items} />
+				<HouseGallery data={GallerySlider[0].imagesCollection.items}/>
 			</Section>
 
-			<CallToAction data={Cta[0]} />
+			<CallToAction data={Cta[0]}/>
 
 			<ContactSection data={ContactSectionModule[0]} />
 		</>

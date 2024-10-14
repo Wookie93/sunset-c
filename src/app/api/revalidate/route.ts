@@ -15,11 +15,6 @@ const routesToRevalidate: string[] = [
     const requestHeaders: Headers = new Headers(request.headers);
     const secret: string | null = requestHeaders.get("x-vercel-reval-key");
 
-      console.log(secret, 'secret')
-      console.log(process.env.CONTENTFUL_REVALIDATE_SECRET, 'CONTENTFUL_REVALIDATE_SECRET')
-      console.log(process.env.NODE_ENV, 'process.env')
-      console.log(process.env.PAYLOAD_SECRET, 'PAYLOAD_SECRET')
-
     if (secret !== process.env.CONTENTFUL_REVALIDATE_SECRET) {
       return NextResponse.json(
         { message: "Invalid secret" },
