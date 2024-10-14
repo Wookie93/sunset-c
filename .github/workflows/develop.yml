@@ -86,7 +86,7 @@ jobs:
           # ... append other environment variables ...
 
           # Transfer the environment file and Docker Compose file to VPS
-          scp -o StrictHostKeyChecking=no -P $SSH_PORT sunset-house/.env $SSH_USER@$SSH_HOST:~
+          scp -o StrictHostKeyChecking=no -P $SSH_PORT .env $SSH_USER@$SSH_HOST:~
 
           scp -o StrictHostKeyChecking=no -P $SSH_PORT docker-compose-sh-dev-web.yaml $SSH_USER@$SSH_HOST:docker-compose-sh-dev-web.yaml
           ssh -o StrictHostKeyChecking=no -p $SSH_PORT $SSH_USER@$SSH_HOST docker compose -f docker-compose-sh-dev-web.yaml pull
