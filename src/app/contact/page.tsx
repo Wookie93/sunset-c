@@ -124,7 +124,7 @@ const ContactPage = async () => {
 					<div className="col-span-12 tabletLg:col-span-6 tabletLg:col-start-7">
 						<Accordion type="single" collapsible>
 							{FaqModule[0].faqCollection.items.map((faq:any, index:number) => (
-								<AccordionItem value="item-1" key={index}>
+								<AccordionItem value={`item-${index}`} key={index}>
 									<AccordionTrigger className="text-left">
 										<Title className="!font-bold">
 											{faq.title}
