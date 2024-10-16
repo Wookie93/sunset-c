@@ -46,6 +46,9 @@ export const Hero = ({data}: HeroProps) => {
 				src={image.url}
 				alt={image.title}
 				className="object-cover mix-blend-soft-light grayscale"
+				style={{
+					transform: "translate3d(0px, 0px, 0px)",
+				}}
 			/>
 			<div className="absolute left-12 top-1/3 hidden laptop:block">
 				<Socials />

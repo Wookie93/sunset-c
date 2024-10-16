@@ -36,6 +36,9 @@ export const CallToAction = ({
 				src={image.url}
 				alt={image.title}
 				className="object-cover opacity-70 mix-blend-hard-light grayscale"
+				style={{
+					transform: "translate3d(0px, 0px, 0px)",
+				}}
 			/>
 			<div className="container relative z-10 mx-auto grid items-center justify-items-center space-y-3 py-[6.25rem] tablet:h-full tablet:py-0 laptop:grid-cols-12">
 				<div

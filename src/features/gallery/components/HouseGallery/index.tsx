@@ -54,6 +54,9 @@ export const HouseGallery = ({data}: HouseGalleryProps) => {
 									"object-cover": true,
 									"mix-blend-soft-light grayscale": !isActive,
 								})}
+								style={{
+									transform: "translate3d(0px, 0px, 0px)",
+								}}
 							/>
 						</div>
 					)}

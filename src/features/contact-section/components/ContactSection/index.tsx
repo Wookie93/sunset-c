@@ -69,6 +69,9 @@ export const ContactSection = ({ data }: ContactSectionProps) => {
 						src={image.url}
 						alt={image.title}
 						className="object-cover opacity-70 mix-blend-soft-light grayscale"
+						style={{
+							transform: "translate3d(0px, 0px, 0px)",
+						}}
 					/>
 					<div className="relative z-10 flex h-full max-w-64 flex-col justify-center space-y-11">
 						<Title className="!text-3xl !font-bold text-gray-900">

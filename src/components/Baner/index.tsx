@@ -19,6 +19,9 @@ export const Baner = ({ title, description, image }: BanerProps) => {
 				src={image.url}
 				alt={image.title}
 				className="object-cover mix-blend-soft-light grayscale"
+				style={{
+					transform: "translate3d(0px, 0px, 0px)",
+				}}
 			/>
 			<div className="container mx-auto grid grid-cols-12 pb-6 pt-32 laptop:pt-40">
 				<div className="col-span-12 space-y-2 laptop:col-span-4">
