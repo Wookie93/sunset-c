@@ -73,7 +73,6 @@ export default async function Home() {
 								fill
 								src={contentSectionCollection.items[0].image.url}
 								alt={contentSectionCollection.items[0].image.title}
-								sizes="27.033vw"
 							/>
 						</div>
 					</div>
@@ -151,7 +150,6 @@ export default async function Home() {
 						fill
 						src={contentSectionCollection.items[2].image.url}
 						alt={contentSectionCollection.items[2].image.title}
-						sizes="27.033vw"
 						className="opacity-30 mix-blend-hard-light"
 					/>
 					</div>
@@ -206,7 +204,6 @@ export default async function Home() {
 								src={contentSectionCollection.items[3].contentCollection.items[1].image.url}
 								alt={contentSectionCollection.items[3].contentCollection.items[1].image.title}
 								fill
-								sizes="22.004vw"
 							/>
 						</div>
 						<Title>{contentSectionCollection.items[3].contentCollection.items[1].title}</Title>
@@ -220,7 +217,6 @@ export default async function Home() {
 								src={contentSectionCollection.items[3].contentCollection.items[2].image.url}
 								alt={contentSectionCollection.items[3].contentCollection.items[2].image.title}
 								fill
-								sizes="22.004vw"
 							/>
 						</div>
 						<Title>{contentSectionCollection.items[3].contentCollection.items[2].title}</Title>

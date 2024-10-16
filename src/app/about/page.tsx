@@ -62,7 +62,6 @@ const AboutPage = async () => {
 								fill
 								src={ContentSection[0].image.url}
 								alt={ContentSection[0].image.title}
-								sizes="27.033vw"
 								className="object-cover"
 							/>
 						</div>

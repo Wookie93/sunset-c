@@ -65,7 +65,6 @@ const GalleryPage = async () => {
 								src={el.image.url}
 								alt={el.image.title}
 								fill
-								sizes="16.503vw"
 								className="object-cover"
 							/>
 						</div>

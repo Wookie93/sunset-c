@@ -60,7 +60,6 @@ const NeighborhoodPage = async () => {
 									fill
 									src={item.image.url}
 									alt={item.image.title}
-									sizes="27.033vw"
 									className="object-cover"
 								/>
 							</div>

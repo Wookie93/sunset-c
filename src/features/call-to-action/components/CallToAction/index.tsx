@@ -31,12 +31,11 @@ export const CallToAction = ({
 	return (
 		<div className="relative overflow-hidden bg-gray-900 tablet:h-screen tablet:max-h-[20rem]">
 			<NextImage
-				fill 
+				fill
 				priority
 				src={image.url}
 				alt={image.title}
 				className="object-cover opacity-70 mix-blend-hard-light grayscale"
-				sizes="100vw"
 			/>
 			<div className="container relative z-10 mx-auto grid items-center justify-items-center space-y-3 py-[6.25rem] tablet:h-full tablet:py-0 laptop:grid-cols-12">
 				<div

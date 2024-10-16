@@ -50,7 +50,6 @@ export const HouseGallery = ({data}: HouseGalleryProps) => {
 								fill
 								src={slide.url}
 								alt={slide.title}
-								sizes="27.033vw"
 								className={clsx({
 									"object-cover": true,
 									"mix-blend-soft-light grayscale": !isActive,

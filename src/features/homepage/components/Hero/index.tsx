@@ -45,7 +45,6 @@ export const Hero = ({data}: HeroProps) => {
 				priority
 				src={image.url}
 				alt={image.title}
-				sizes="100vw"
 				className="object-cover mix-blend-soft-light grayscale"
 			/>
 			<div className="absolute left-12 top-1/3 hidden laptop:block">

@@ -18,7 +18,6 @@ export const Baner = ({ title, description, image }: BanerProps) => {
 				fill
 				src={image.url}
 				alt={image.title}
-				sizes="100vw"
 				className="object-cover mix-blend-soft-light grayscale"
 			/>
 			<div className="container mx-auto grid grid-cols-12 pb-6 pt-32 laptop:pt-40">

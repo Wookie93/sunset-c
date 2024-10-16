@@ -105,7 +105,6 @@ const ContactPage = async () => {
 								fill
 								src={ContactSection[0].image.url}
 								alt={ContactSection[0].image.title}
-								sizes="27.033vw"
 								className="object-cover"
 							/>
 						</div>

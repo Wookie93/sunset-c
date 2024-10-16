@@ -68,7 +68,6 @@ export const ContactSection = ({ data }: ContactSectionProps) => {
 						fill
 						src={image.url}
 						alt={image.title}
-						sizes="22.004vw"
 						className="object-cover opacity-70 mix-blend-soft-light grayscale"
 					/>
 					<div className="relative z-10 flex h-full max-w-64 flex-col justify-center space-y-11">
