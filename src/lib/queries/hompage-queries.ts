@@ -54,6 +54,7 @@ export const GET_HOMEPAGE = gql`
           title
         }
         imageAtRight
+        hasGrayBcg
         buttonsSectionCollection(limit:20){
           items{
             textOnButton
@@ -61,6 +62,19 @@ export const GET_HOMEPAGE = gql`
               slug
             }
           }
+        }
+      }
+    }
+    team{
+      title
+      peopleNames
+      peopleDescriptions
+      imagesCollection{
+        items{
+          title
+          url
+          width
+          height
         }
       }
     }
