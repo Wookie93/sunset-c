@@ -15,7 +15,7 @@ export function formatMoney(amount: number, currency = "PLN") {
 
 
   
-export function groupByTypename(items:any) {
+export function groupByTypename(items:any = []) {
 	return items.reduce((acc:any, item:any) => {
 	  const typename = item.typename || item.__typename;
 	  if (typename) {

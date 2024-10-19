@@ -54,7 +54,7 @@ export const GET_Neighborhood = gql`
             height
             title
           }
-          contactButton {
+          contactButton(where:{sys:{id_exists:true}})  {
             ...ButtonFields
           }
         }

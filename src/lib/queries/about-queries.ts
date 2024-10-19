@@ -15,7 +15,7 @@ export const GET_ABOUT_US = gql`
         modulesCollection {
         items {
             __typename
-            ... on SecondaryHero {
+            ... on SecondaryHero{
                 ...SecondaryHeroFields
             }
             ... on ContentSection {
@@ -30,7 +30,7 @@ export const GET_ABOUT_US = gql`
               url
               title
             }
-          }
+            }
                 }
             }
             image {
@@ -40,7 +40,7 @@ export const GET_ABOUT_US = gql`
             }
             ... on InfoSection{
                 title
-                infoLinksCollection{
+                infoLinksCollection(where:{sys:{id_exists:true}}){
                     items{
                         title
                         url

@@ -60,6 +60,9 @@ export const CTA_FRAGMENT = gql`
 
 export const SECONDHERO_FRAGMENT = gql`
 fragment SecondaryHeroFields on SecondaryHero {
+  	      sys{
+           id
+          }
           title
           description
           image{

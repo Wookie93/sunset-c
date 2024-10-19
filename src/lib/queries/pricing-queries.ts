@@ -57,7 +57,7 @@ export const GET_PRICES = gql`
             height
             title
           }
-          contactButton {
+          contactButton(where:{sys:{id_exists:true}})  {
             ...ButtonFields
           }
         }

@@ -33,7 +33,7 @@ export const GET_CONTACT_PAGE= gql`
             height
             title
           }
-          contactButton {
+          contactButton(where:{sys:{id_exists:true}}) {
             ...ButtonFields
           }
         }

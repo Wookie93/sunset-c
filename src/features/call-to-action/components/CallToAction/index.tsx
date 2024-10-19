@@ -53,9 +53,9 @@ export const CallToAction = ({
 				</div>
 				<div className="space-y-4 tablet:col-span-6 tablet:col-start-7 tablet:col-end-10">
 					<Description className="text-gray-100">{description}</Description>
-					<ButtonLink href={button.linkTo.slug ?? "/"} type="primary">
+					{button && <ButtonLink href={button.linkTo.slug ?? "/"} type="primary">
 						{button.textOnButton}
-					</ButtonLink>
+					</ButtonLink>}
 				</div>
 			</div>
 		</div>

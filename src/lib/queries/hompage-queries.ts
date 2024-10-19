@@ -1,13 +1,14 @@
 import { gql } from 'graphql-request';
 import { CTA_FRAGMENT, BUTTON_FRAGMENT } from './fragments';
 
+
 export const GET_HOMEPAGE = gql`
   ${BUTTON_FRAGMENT}
   ${CTA_FRAGMENT}
 
   query GetHomepage {
   homepage(id: "453yZcJKOzGfJOyq4CMHTx") {
-    heroBaner {
+    heroBaner(where:{sys:{id_exists:true}})  {
       title
       description
       firstButton {
@@ -28,11 +29,14 @@ export const GET_HOMEPAGE = gql`
         instagram
       }
     }
-    cta {
+    cta(where:{sys:{id_exists:true}}) {
       ...CTAFields
     }
     contentSectionCollection(limit: 20) {
       items {
+        sys{
+          id
+        }
         title
         contentCollection {
           items{
@@ -65,12 +69,15 @@ export const GET_HOMEPAGE = gql`
         }
       }
     }
-    team{
+    team(where:{sys:{id_exists:true}}) {
+      sys{
+        id
+      }
       title
       peopleNames
       peopleDescriptions
-      imagesCollection{
-        items{
+      imagesCollection {
+        items {
           title
           url
           width
@@ -78,7 +85,10 @@ export const GET_HOMEPAGE = gql`
         }
       }
     }
-    contactSection {
+    contactSection(where:{sys:{id_exists:true}})  {
+      sys{
+        id
+      }
       title
       subtitle
       contactDataCollection {
@@ -94,7 +104,7 @@ export const GET_HOMEPAGE = gql`
         height
         title
       }
-      contactButton {
+      contactButton(where:{sys:{id_exists:true}})  {
         ...ButtonFields
       }
     }
@@ -104,33 +114,3 @@ export const GET_HOMEPAGE = gql`
 
 
 
-// export const GET_GALLERY = gql`
-//   query GetGallery {
-//     galleryCollection {
-//       items {
-//         title
-//       }
-//     }
-//   }
-// `;
-
-
-// export const GET_NEIGHBOURHOOD = gql`
-//   query GetNeighbourhood {
-//     neighbourhoodCollection {
-//       items {
-//         title
-//       }
-//     }
-//   }
-// `;
-
-// export const GET_CONTACT = gql`
-//   query GetContact {
-//     contactCollection {
-//       items {
-//         title
-//       }
-//     }
-//   }
-// `;

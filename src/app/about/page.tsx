@@ -81,7 +81,7 @@ const AboutPage = async () => {
 			<div className="bg-gray-100 py-9">
 				<div className="container mx-auto grid grid-cols-12 gap-6">
 					<div className="col-span-6 laptop:col-span-3">
-						<NextLink href={InfoSection[0].infoLinksCollection.items[0].url || '/'} className="flex flex-row items-center space-x-2">
+						<NextLink href={InfoSection[0].infoLinksCollection.items[0]?.url || '/'} className="flex flex-row items-center space-x-2">
 							<IconShieldChevron size={24} />
 							<p className="text-base font-normal text-gray-900">
 								{InfoSection[0].infoLinksCollection.items[0].title}

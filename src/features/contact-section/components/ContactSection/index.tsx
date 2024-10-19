@@ -80,9 +80,9 @@ export const ContactSection = ({ data }: ContactSectionProps) => {
 						<Description className="text-gray-900">
 							{subtitle}
 						</Description>
-						<ButtonLink href={contactButton.linkTo.slug} type="darken">
+						{contactButton && <ButtonLink href={contactButton.linkTo.slug} type="darken">
 							{contactButton.textOnButton || 'Przejdź do kontaktu'}
-						</ButtonLink>
+						</ButtonLink>}
 					</div>
 				</div>
 			</div>

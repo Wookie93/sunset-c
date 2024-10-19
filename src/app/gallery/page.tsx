@@ -26,7 +26,7 @@ async function getGalleryContent() {
 
 const GalleryPage = async () => {
 
-	const {metaTitle ='Sunset house', metaDescription ='Sunset house', modulesCollection} = await getGalleryContent();
+	const {metaTitle ='Sunset house', metaDescription ='Sunset house', modulesCollection = []} = await getGalleryContent();
 	const {SecondaryHero, ContentSection, ContactSection: ContactSectionModule} = groupByTypename(modulesCollection.items);
 	await getGalleryContent();
 	return (
@@ -35,14 +35,14 @@ const GalleryPage = async () => {
         		<title>{metaTitle}</title>
         		<meta name="description" content={metaDescription} />
       		</Head>
-			<Baner
+			{SecondaryHero && <Baner
 				title={SecondaryHero[0].title}
 				description={SecondaryHero[0].description}
 				image={SecondaryHero[0].image}
-			/>
+			/>}
 
 			<Section className="container mx-auto space-y-10 laptop:!pb-0">
-				{ContentSection.map((el:any) => (
+				{ContentSection && ContentSection.map((el:any) => (
 					<div
 						key={el.sys.id}
 						className="grid grid-cols-12 gap-y-4 rounded-2xl border border-gray-100 p-4 laptop:p-10"
@@ -71,7 +71,7 @@ const GalleryPage = async () => {
 					</div>
 				))}
 			</Section>
-			<ContactSection data={ContactSectionModule[0]} />
+			{ContactSectionModule && <ContactSection data={ContactSectionModule[0]} />}
 		</>
 	);
 };
