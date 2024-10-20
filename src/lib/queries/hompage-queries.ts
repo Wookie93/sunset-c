@@ -20,7 +20,7 @@ export const GET_HOMEPAGE = gql`
       image {
         url
         width
-        height
+        height 
         title
       }
 

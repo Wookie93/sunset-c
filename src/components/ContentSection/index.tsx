@@ -40,8 +40,8 @@ export const ContentSection = ({data}: any) => {
                         <SectionTitle level={3}>
                             {title}
                         </SectionTitle>
-                        {contentCollection && contentCollection.items.map((content:ContentfulParagraph | ContentfulLongText) => (
-                            <ContentSectionText paragraph={content} className="flex max-w-[28.125rem] flex-row space-x-6" classNameForTextWrap="flex flex-col space-y-2" key={content.sys.id} />
+                        {contentCollection && contentCollection.items.map((content:ContentfulParagraph | ContentfulLongText, index:number) => (
+                            <ContentSectionText paragraph={content} className="flex max-w-[28.125rem] flex-row space-x-6" classNameForTextWrap="flex flex-col space-y-2" key={content.sys.id || index} />
                         ))}
                     </div>
                     {!ifVideo ? 
@@ -68,8 +68,8 @@ export const ContentSection = ({data}: any) => {
                     </SectionTitle>
                 </div>
                 <div className="grid grid-cols-1 tabletLg:grid-cols-3 tabletLg:space-x-10">
-                {contentCollection && contentCollection.items.map((content:ContentfulParagraph | ContentfulLongText)=> (
-                    <ContentSectionText paragraph={content} className="space-y-6 p-6" classNameForTextWrap="space-y-2" key={content.sys.id}/>
+                {contentCollection && contentCollection.items.map((content:ContentfulParagraph | ContentfulLongText, index:number)=> (
+                    <ContentSectionText paragraph={content} className="space-y-6 p-6" classNameForTextWrap="space-y-2" key={content.sys.id || index}/>
                 ))}
                 </div>
                 {buttonsSectionCollection && 
