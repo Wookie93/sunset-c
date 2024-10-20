@@ -19,11 +19,15 @@ export const GET_ABOUT_US = gql`
                 ...SecondaryHeroFields
             }
             ... on ContentSection {
+            sys{
+                id
+            }
             title
             contentCollection(limit:20) {
                 items {
              __typename
-          ... on Paragraph{
+            ... on Paragraph{
+            sys{id}
             title
             description
             image{

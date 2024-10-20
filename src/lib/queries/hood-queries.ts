@@ -19,11 +19,13 @@ export const GET_Neighborhood = gql`
           ...SecondaryHeroFields
         }
         ... on ContentSection {
+          sys{id}
           title
           contentCollection(limit: 20) {
             items{
             __typename
-              ... on LongText{ 
+              ... on LongText{
+                sys{id} 
                 title
                 description
               }

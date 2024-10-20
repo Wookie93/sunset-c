@@ -18,23 +18,17 @@ import {
 	AccordionItem,
 	AccordionTrigger,
 } from "@/components/ui/accordion";
-import client from "@/lib/contentful";
 import { ContactPageResponse } from "@/types/contefulTypes";
 import { GET_CONTACT_PAGE } from "@/lib/queries/contact-queries";
-import { groupByTypename } from "@/lib/utils";
+import { fetchData, groupByTypename } from "@/lib/utils";
 import Head from "next/head";
 
 const Map = dynamic(() => import('@/features/map/index'), { ssr: false });
 
 
-async function getContactPageContent() {
-	const data = await client.request<ContactPageResponse>(GET_CONTACT_PAGE);
-	return data.page
-  }
-
 const ContactPage = async () => {
 
-	const {metaTitle, metaDescription, modulesCollection} = await getContactPageContent()
+	const {metaTitle, metaDescription, modulesCollection} = await fetchData<ContactPageResponse>(GET_CONTACT_PAGE);
 	const result = groupByTypename(modulesCollection.items);
 	const {SecondaryHero, ContactSection, FaqModule} = result;
 
@@ -45,13 +39,13 @@ const ContactPage = async () => {
         		<meta name="description" content={metaDescription} />
       		</Head>
 
-			<Baner
+			{SecondaryHero&&<Baner
 				title={SecondaryHero[0].title}
 				description={SecondaryHero[0].description}
 				image={SecondaryHero[0].image}
-			/>
+			/>}
 
-			<Section className="container mx-auto">
+			{ContactSection&&<Section className="container mx-auto">
 				<div className="grid grid-cols-12">
 					<div className="col-span-12 space-y-10 tabletLg:col-span-5">
 						<div className="space-y-4">
@@ -110,11 +104,11 @@ const ContactPage = async () => {
 						</div>
 					</div>
 				</div>
-			</Section>
+			</Section>}
 
 			<Map />
 
-			<Section className="container mx-auto">
+			{FaqModule&&<Section className="container mx-auto">
 				<div className="grid grid-cols-12">
 					<div className="col-span-12 mb-5 tabletLg:col-span-4 tabletLg:mb-0">
 						<SectionTitle level={3}>
@@ -140,7 +134,7 @@ const ContactPage = async () => {
 						</Accordion>
 					</div>
 				</div>
-			</Section>
+			</Section>}
 		</>
 	);
 };

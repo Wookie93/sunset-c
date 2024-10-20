@@ -6,6 +6,7 @@ import { Title } from "../Title"
 import NextImage from "next/image";
 import { VideoWrapper } from "../VideoWrapper";
 import { ButtonLink } from "../ButtonLink";
+import { ContentfulLongText, ContentfulParagraph } from "@/types/contefulTypes";
 
 const ContentSectionText = ({paragraph, className, classNameForTextWrap}: any) => {
     const {title, description, image} = paragraph;
@@ -39,8 +40,8 @@ export const ContentSection = ({data}: any) => {
                         <SectionTitle level={3}>
                             {title}
                         </SectionTitle>
-                        {contentCollection && contentCollection.items.map((content:any) => (
-                            <ContentSectionText paragraph={content} className="flex max-w-[28.125rem] flex-row space-x-6" classNameForTextWrap="flex flex-col space-y-2" />
+                        {contentCollection && contentCollection.items.map((content:ContentfulParagraph | ContentfulLongText) => (
+                            <ContentSectionText paragraph={content} className="flex max-w-[28.125rem] flex-row space-x-6" classNameForTextWrap="flex flex-col space-y-2" key={content.sys.id} />
                         ))}
                     </div>
                     {!ifVideo ? 
@@ -67,14 +68,14 @@ export const ContentSection = ({data}: any) => {
                     </SectionTitle>
                 </div>
                 <div className="grid grid-cols-1 tabletLg:grid-cols-3 tabletLg:space-x-10">
-                {contentCollection && contentCollection.items.map((content:any) => (
-                            <ContentSectionText paragraph={content} className="space-y-6 p-6" classNameForTextWrap="space-y-2"/>
+                {contentCollection && contentCollection.items.map((content:ContentfulParagraph | ContentfulLongText)=> (
+                    <ContentSectionText paragraph={content} className="space-y-6 p-6" classNameForTextWrap="space-y-2" key={content.sys.id}/>
                 ))}
                 </div>
                 {buttonsSectionCollection && 
                     <div className="mt-10 flex flex-col items-center justify-center max-tablet:space-y-4 tablet:flex-row tablet:space-x-6">
-                        {buttonsSectionCollection.items.map((btn: any) => (
-                            <ButtonLink type="bordered" href={btn.linkTo.slug}>
+                        {buttonsSectionCollection.items.map((btn: any, index:number) => (
+                            <ButtonLink key={index} type="bordered" href={btn.linkTo.slug}>
                                 {btn.textOnButton}
                             </ButtonLink>
                          ))}

@@ -2,6 +2,7 @@ import { gql } from 'graphql-request';
 
 export const PARAGRAPH_FRAGMENT = gql`
   fragment ParagraphFields on Paragraph {
+    sys{id}
     title
     description
     image{
@@ -15,6 +16,7 @@ export const PARAGRAPH_FRAGMENT = gql`
 
 export const LONG_TEXT_FRAGMENT = gql`
   fragment LongTextFields on LongText {
+    sys{id}
     title
     description
   }

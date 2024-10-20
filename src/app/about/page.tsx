@@ -2,8 +2,6 @@ import Head from 'next/head';
 import { Baner } from "@/components/Baner";
 import React from "react";
 import { SectionTitle } from "@/components/SectionTitle";
-import { Description } from "@/components/Description";
-import NextImage from "next/image";
 import { Section } from "@/components/Section";
 import {
 	IconBath,
@@ -23,22 +21,16 @@ import { FeatureFacilitie } from "@/components/FeatureFacilitie";
 import { HouseGallery } from "@/features/gallery";
 import { CallToAction } from "@/features/call-to-action";
 import { ContactSection } from "@/features/contact-section";
-import client from '@/lib/contentful';
 
 import { AboutResponse } from "@/types/contefulTypes";
 import { GET_ABOUT_US } from "@/lib/queries/about-queries";
-import { groupByTypename } from "@/lib/utils";
-
-async function getAboutContent() {
-	const data = await client.request<AboutResponse>(GET_ABOUT_US);
-	return data.page
-}
-
+import { fetchData, groupByTypename } from "@/lib/utils";
+import { ContentSection } from '@/components/ContentSection';
 
 const AboutPage = async () => {
 
-	const {metaTitle, metaDescription, modulesCollection}  = await getAboutContent();
-	const {SecondaryHero, ContentSection, InfoSection, HomeFeatures, GallerySlider, Cta, ContactSection: ContactSectionModule} = groupByTypename(modulesCollection.items)
+	const {metaTitle, metaDescription, modulesCollection}  = await fetchData<AboutResponse>(GET_ABOUT_US);
+	const {SecondaryHero, ContentSection: ContentSectionData, InfoSection, HomeFeatures, GallerySlider, Cta, ContactSection: ContactSectionModule} = groupByTypename(modulesCollection.items)
 
 
 	return (
@@ -48,37 +40,18 @@ const AboutPage = async () => {
         		<meta name="description" content={metaDescription} />
       		</Head>
 
-			<Baner
+			{SecondaryHero	&& <Baner
 				title={SecondaryHero[0].title}
 				description={SecondaryHero[0].description}
 				image={SecondaryHero[0].image}
-			/>
+			/>}
 
-			<Section className="container mx-auto">
-				<div className="grid tabletLg:grid-cols-12">
-					<div className="order-2 col-span-1 pt-[3.125rem] tabletLg:order-1 tabletLg:col-span-6 tabletLg:col-start-1 tabletLg:pt-0">
-						<div className="relative h-lvh max-h-[21.875rem] laptop:max-h-[31.25rem]">
-							<NextImage
-								fill
-								src={ContentSection[0].image.url}
-								alt={ContentSection[0].image.title}
-								className="object-cover"
-							/>
-						</div>
-					</div>
-					<div className="order-1 content-center space-y-6 px-5 tabletLg:order-2 tabletLg:col-span-5 tabletLg:col-start-8 tabletLg:px-0">
-						<SectionTitle level={3}>{ContentSection[0].title}</SectionTitle>
-						{ContentSection[0].contentCollection.items.map((item:any,index:number) => (
-							<Description className="text-gray-600" key={index}>
-								{item.description}
-							</Description>
-						))}
+			{ContentSectionData && ContentSectionData.map((section: any) => (
+				<ContentSection data={section} key={section.sys.id} />
+			))}
 
-					</div>
-				</div>
-			</Section>
 
-			<div className="bg-gray-100 py-9">
+			{InfoSection &&	<div className="bg-gray-100 py-9">
 				<div className="container mx-auto grid grid-cols-12 gap-6">
 					<div className="col-span-6 laptop:col-span-3">
 						<NextLink href={InfoSection[0].infoLinksCollection.items[0]?.url || '/'} className="flex flex-row items-center space-x-2">
@@ -119,9 +92,9 @@ const AboutPage = async () => {
 						</NextLink>
 					</div>
 				</div>
-			</div>
+			</div>}
 
-			<Section className="container mx-auto">
+			{HomeFeatures && <Section className="container mx-auto">
 				<div className="flex justify-center">
 					<SectionTitle level={3}>{HomeFeatures[0].title}</SectionTitle>
 				</div>
@@ -190,18 +163,18 @@ const AboutPage = async () => {
 						/>
 					</div>
 				</div>
-			</Section>
+			</Section>}
 
-			<Section className="bg-gray-100 max-tablet:pb-0">
+			{HomeFeatures&&<Section className="bg-gray-100 max-tablet:pb-0">
 				<div className="mb-[3.125rem] flex justify-center laptop:mb-20">
 					<SectionTitle level={3}>{GallerySlider[0].title}</SectionTitle>
 				</div>
 				<HouseGallery data={GallerySlider[0].imagesCollection.items}/>
 			</Section>
+}
+			{Cta&&<CallToAction data={Cta[0]}/>}
 
-			<CallToAction data={Cta[0]}/>
-
-			<ContactSection data={ContactSectionModule[0]} />
+			{ContactSectionModule&&<ContactSection data={ContactSectionModule[0]} />}
 		</>
 	);
 };

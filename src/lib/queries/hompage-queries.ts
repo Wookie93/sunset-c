@@ -42,6 +42,7 @@ export const GET_HOMEPAGE = gql`
           items{
           __typename
           ... on Paragraph{
+            sys{id}
             title
             description
             image{

@@ -4,22 +4,16 @@ import { ContactSection } from "@/features/contact-section";
 import { CallToAction } from "@/features/call-to-action";
 import { Section } from "@/components/Section";
 import { Pricing } from "@/features/pricing";
-import client from "@/lib/contentful";
 import { PricingPageResponse } from "@/types/contefulTypes";
 import { GET_PRICES } from "@/lib/queries/pricing-queries";
-import { groupByTypename } from "@/lib/utils";
+import { fetchData, groupByTypename } from "@/lib/utils";
 import Head from "next/head";
 
-
-async function getPricingContent() {
-	const data = await client.request<PricingPageResponse>(GET_PRICES);
-	return data.page
-  }
 
 
 const PricingPage = async () => {
 
-	const {metaTitle, metaDescription, modulesCollection} = await getPricingContent()
+	const {metaTitle, metaDescription, modulesCollection} = await fetchData<PricingPageResponse>(GET_PRICES);
 	const result = groupByTypename(modulesCollection.items);
 	const {SecondaryHero, Paragraph, Pricing: PricingModule, Cta, ContactSection: ContactSectionModule} = result
 
@@ -29,21 +23,21 @@ const PricingPage = async () => {
         		<title>{metaTitle}</title>
         		<meta name="description" content={metaDescription} />
       		</Head>
-			<Baner
+			{SecondaryHero&&<Baner
 				title={SecondaryHero[0].title}
 				description={SecondaryHero[0].description}
 				image={SecondaryHero[0].image}
 			/>
-
-			<Section className="overflow-hidden">
+}
+			{PricingModule&&<Section className="overflow-hidden">
 				<div className="container mx-auto">
 					<Pricing description={Paragraph[0]} pricingData={PricingModule} />
 				</div>
-			</Section>
+			</Section>}
 
-			<CallToAction data={Cta[0]} />
+			{Cta&&<CallToAction data={Cta[0]} />}
 
-			<ContactSection data={ContactSectionModule[0]} />
+			{ContactSectionModule&&<ContactSection data={ContactSectionModule[0]} />}
 		</>
 	);
 };

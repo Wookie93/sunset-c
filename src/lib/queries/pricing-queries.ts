@@ -18,6 +18,7 @@ export const GET_PRICES = gql`
           ...SecondaryHeroFields
         }
         ... on Paragraph {
+          sys{id}
           title
           description
           image {

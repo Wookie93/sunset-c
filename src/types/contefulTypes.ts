@@ -16,11 +16,22 @@ export type ContentfulImage = {
 };
 
 export type ContentfulParagraph = {
+  sys:{
+    id:string
+  }
   title: string;
   description: string;
   image: {
-    original_url: string;
+    url: string;
+    title: string
   };
+};
+export type ContentfulLongText = {
+  sys:{
+    id:string
+  }
+  title: string;
+  description: string;
 };
 
 export type ContentfulContactSection = {

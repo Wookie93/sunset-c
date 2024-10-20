@@ -37,6 +37,7 @@ ${BUTTON_FRAGMENT}
               items {
                 __typename
                 ... on Paragraph {
+                  sys{id}
                   title
                   description
                   image {
